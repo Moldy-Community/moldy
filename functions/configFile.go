@@ -9,6 +9,7 @@ import (
 	vp "github.com/spf13/viper"
 )
 
+/* Add the default values and paths */
 var (
 	defaults = map[string]interface{}{
 		"githubUser":     "none",
@@ -23,6 +24,7 @@ var (
 	}
 )
 
+/* Creating the config file */
 func CreateConfigFile() {
 	vp.SetConfigType("toml")
 	for k, v := range defaults {
@@ -35,6 +37,7 @@ func CreateConfigFile() {
 	vp.SafeWriteConfig()
 }
 
+/* Setting the values */
 func SetConfigFile() {
 	prompt := promptui.Prompt{
 		Label:   "Username",
@@ -58,6 +61,8 @@ func SetConfigFile() {
 	utils.CheckErrors(err, "2", "Error iSn the encryption")
 	vp.Set("githubPassword", txtEncrypt)
 }
+
+/* Reading the config file :D */
 
 func ReadConfigFile() ([]byte, interface{}) {
 	githubUser := vp.Get("githubUser")
