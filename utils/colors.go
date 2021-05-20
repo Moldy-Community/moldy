@@ -1,7 +1,7 @@
 package utils
 
 import (
-	colors "github.com/fatih/color/"
+	colors "github.com/fatih/color"
 )
 
 func Warn(msg string) {
