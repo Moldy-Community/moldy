@@ -22,10 +22,19 @@ THE SOFTWARE.
 
 package utils
 
-import "log"
+import (
+	"go.uber.org/zap"
+)
 
-func CheckErrors(err error, code, msg string) {
+func CheckErrors(err error, code, msg, solution string) {
+
 	if err != nil {
-		log.Fatalf("Code: %v Error %v", code, msg)
+		logger := zap.NewExample().Sugar()
+		defer logger.Sync()
+		logger.Infow(msg,
+			"code", code,
+			"solution", solution)
+	} else {
+		return
 	}
 }
