@@ -8,7 +8,7 @@ import (
 
 func GetDotEnv() string {
 	err := godotenv.Load()
-	CheckErrors(err, "2", "Error in the read the dot env files")
+	CheckErrors(err, "code 2", "Error reading the enviroment variables", "Report the error in the Github :D")
 
 	return os.Getenv("CRYPTO_KEY")
 }

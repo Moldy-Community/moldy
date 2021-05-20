@@ -44,21 +44,21 @@ func SetConfigFile() {
 		Default: "none",
 	}
 	result, err := prompt.Run()
-	utils.CheckErrors(err, "2", "Error in the input of the user")
+	utils.CheckErrors(err, "Code 3", "Error in the input of the user", "Re run the command for fix the input with the chars utf-8")
 	vp.Set("githubUser", result)
 	promptPass := promptui.Prompt{
 		Label: "Password",
 		Mask:  '*',
 	}
 	resultPass, err := promptPass.Run()
-	utils.CheckErrors(err, "2", "Error in the input of the password")
+	utils.CheckErrors(err, "Code 3", "Error in the input of the password", "Re run the command for fix the input with the chars utf-8")
 	fmt.Printf("Your username is %q\n", result)
 	fmt.Printf("Your password is %q\n", resultPass)
 
 	byteText := []byte(resultPass)
 	key := utils.GetDotEnv()
 	txtEncrypt, err := utils.Encrypt(byteText, []byte(key))
-	utils.CheckErrors(err, "2", "Error iSn the encryption")
+	utils.CheckErrors(err, "Code 2", "Error in the encryption", "Report the error in the github")
 	vp.Set("githubPassword", txtEncrypt)
 }
 
@@ -71,6 +71,6 @@ func ReadConfigFile() ([]byte, interface{}) {
 	json.Unmarshal(txt, &githubPassInterface)
 	key := utils.GetDotEnv()
 	val, err := utils.Decrypt(txt, []byte(key))
-	utils.CheckErrors(err, "2", "Error in de decryption")
+	utils.CheckErrors(err, "Code 2", "Error in de decryption", "Report the error in the github")
 	return val, githubUser
 }
