@@ -36,13 +36,13 @@ var cfgFile string
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
 	Use:   "moldy",
-	Short: "A brief description of your application",
-	Long: `A longer description that spans multiple lines and likely contains
-examples and usage of using your application. For example:
+	Short: "The best project starter and manager of the world",
+	Long: `Need start a project with a structure Moldy is the solution
 
-Cobra is a CLI library for Go that empowers applications.
-This application is a tool to generate the needed files
-to quickly create a Cobra application.`,
+Start your project with a template and create a manager for the versions and many other features
+Promote your library, language or framework making a template here.
+The best speed provide by Golang :D.
+`,
 }
 
 // Execute adds all child commands to the root command and sets flags appropriately.
