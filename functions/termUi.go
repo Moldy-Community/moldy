@@ -16,17 +16,6 @@ func BasicPrompt(Label, Default string) string {
 	return result
 }
 
-func SudoPrompt() string {
-	utils.Info("The sudo Mode Activated :)")
-	prompt := promptui.Prompt{
-		Label: "SUDO CONFIRMATION",
-		Mask:  '*',
-	}
-	result, err := prompt.Run()
-	utils.CheckErrors(err, "Code 3", "Error in the input of the user", "Re run the command for fix the input with utf-8 chars")
-	return result
-}
-
 func PasswordPrompt(Label string) string {
 	prompt := promptui.Prompt{
 		Label: Label,
