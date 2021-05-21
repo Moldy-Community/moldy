@@ -1,48 +1,23 @@
 package utils
 
 import (
-	"crypto/aes"
-	"crypto/cipher"
-	"crypto/rand"
-	"errors"
-	"io"
+	"github.com/matthewhartstonge/argon2"
 )
 
-func Encrypt(plaintext []byte, key []byte) ([]byte, error) {
-	c, err := aes.NewCipher(key)
-	if err != nil {
-		return nil, err
-	}
+func Encrypt(plaintext string) string {
+	argon := argon2.DefaultConfig()
 
-	gcm, err := cipher.NewGCM(c)
-	if err != nil {
-		return nil, err
-	}
-
-	nonce := make([]byte, gcm.NonceSize())
-	if _, err = io.ReadFull(rand.Reader, nonce); err != nil {
-		return nil, err
-	}
-
-	return gcm.Seal(nonce, nonce, plaintext, nil), nil
+	encoded, err := argon.HashEncoded([]byte(plaintext))
+	CheckErrors(err, "Code 2", "Error crypting the text", "Report the error in the github or write the value again")
+	return string(encoded)
 }
 
-func Decrypt(ciphertext []byte, key []byte) ([]byte, error) {
-	c, err := aes.NewCipher(key)
-	if err != nil {
-		return nil, err
+func Decrypt(plaintext, hash string) bool {
+	ok, err := argon2.VerifyEncoded([]byte(plaintext), []byte(hash))
+	CheckErrors(err, "Code 2", "Error in the verification of the encodes", "Report the error on the github or check the values :D")
+	if ok {
+		return true
+	} else {
+		return false
 	}
-
-	gcm, err := cipher.NewGCM(c)
-	if err != nil {
-		return nil, err
-	}
-
-	nonceSize := gcm.NonceSize()
-	if len(ciphertext) < nonceSize {
-		return nil, errors.New("ciphertext too short")
-	}
-
-	nonce, ciphertext := ciphertext[:nonceSize], ciphertext[nonceSize:]
-	return gcm.Open(nil, nonce, ciphertext, nil)
 }

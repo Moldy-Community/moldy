@@ -1,76 +1,43 @@
 package functions
 
 import (
-	"encoding/json"
-	"fmt"
-
 	"github.com/Moldy-Community/CLI/utils"
-	"github.com/manifoldco/promptui"
 	vp "github.com/spf13/viper"
 )
 
-/* Add the default values and paths */
+/* Add the default values, paths, aliases and config name and type */
 var (
 	defaults = map[string]interface{}{
-		"githubUser":     "none",
-		"githubPassword": "none",
-		"progressBar":    true,
-		"asciiMoldy":     true,
+		"progressBar": true,
+		"asciiArt":    true,
+		"colorsMode":  true,
 	}
-	configName  = "MoldyConfig"
-	configPaths = []string{
-		"$HOME/.config/moldy",
-		"%USERPROFILE%/.config/moldy",
+	aliases = map[string]string{
+		"prgB": "progressbar",
+		"ascA": "asciiArt",
+		"colM": "colorsMode",
 	}
+	configName = "MoldyFile"
+	configType = "toml"
 )
 
 /* Creating the config file */
 func CreateConfigFile() {
-	vp.SetConfigType("toml")
+	vp.SetConfigName(configName)
+	vp.SetConfigType(configType)
 	for k, v := range defaults {
 		vp.SetDefault(k, v)
 	}
-	for _, p := range configPaths {
-		vp.AddConfigPath(p)
+	for a, k := range aliases {
+		vp.RegisterAlias(a, k)
 	}
-	vp.SetConfigName(configName)
-	vp.SafeWriteConfig()
+	err := vp.WriteConfig()
+	utils.CheckErrors(err, "Code 6", "Error writing the config File", "Report the error in github :D")
 }
 
-/* Setting the values */
-func SetConfigFile() {
-	prompt := promptui.Prompt{
-		Label:   "Username",
-		Default: "none",
-	}
-	result, err := prompt.Run()
-	utils.CheckErrors(err, "Code 3", "Error in the input of the user", "Re run the command for fix the input with the chars utf-8")
-	vp.Set("githubUser", result)
-	promptPass := promptui.Prompt{
-		Label: "Password",
-		Mask:  '*',
-	}
-	resultPass, err := promptPass.Run()
-	utils.CheckErrors(err, "Code 3", "Error in the input of the password", "Re run the command for fix the input with the chars utf-8")
-	fmt.Printf("Your username is %q\n", result)
-	fmt.Printf("Your password is %q\n", resultPass)
-
-	byteText := []byte(resultPass)
-	key := utils.GetDotEnv()
-	txtEncrypt, err := utils.Encrypt(byteText, []byte(key))
-	utils.CheckErrors(err, "Code 2", "Error in the encryption", "Report the error in the github")
-	vp.Set("githubPassword", txtEncrypt)
-}
-
-/* Reading the config file :D */
-
-func ReadConfigFile() ([]byte, interface{}) {
-	githubUser := vp.Get("githubUser")
-	githubPassInterface := vp.Get("githubPassword")
-	var txt []byte
-	json.Unmarshal(txt, &githubPassInterface)
-	key := utils.GetDotEnv()
-	val, err := utils.Decrypt(txt, []byte(key))
-	utils.CheckErrors(err, "Code 2", "Error in de decryption", "Report the error in the github")
-	return val, githubUser
+func ReadCfgFile() (bool, bool, bool) {
+	progressBar := vp.GetBool("prgB")
+	asciiArt := vp.GetBool("ascA")
+	colM := vp.GetBool("colM")
+	return progressBar, asciiArt, colM
 }

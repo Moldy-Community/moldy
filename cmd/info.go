@@ -51,26 +51,27 @@ func showInfo() {
 
 ███╗   ███╗ ██████╗ ██╗     ██████╗ ██╗   ██╗
 ████╗ ████║██╔═══██╗██║     ██╔══██╗╚██╗ ██╔╝
-██╔████╔██║██║   ██║██║     ██║  ██║ ╚████╔╝ 
-██║╚██╔╝██║██║   ██║██║     ██║  ██║  ╚██╔╝  
-██║ ╚═╝ ██║╚██████╔╝███████╗██████╔╝   ██║   
-╚═╝     ╚═╝ ╚═════╝ ╚══════╝╚═════╝    ╚═╝   
-                                             
+██╔████╔██║██║   ██║██║     ██║  ██║ ╚████╔╝
+██║╚██╔╝██║██║   ██║██║     ██║  ██║  ╚██╔╝
+██║ ╚═╝ ██║╚██████╔╝███████╗██████╔╝   ██║
+╚═╝     ╚═╝ ╚═════╝ ╚══════╝╚═════╝    ╚═╝
+
 	`
 
 	fmt.Printf(asciiMoldy + `
-    The best tool for initial his project :
+The best tool for initial his project :
 
-    Moldy is a Project Starter writed in python that help for 
-    start his project and is 100% OPEN SOURCE.
+Moldy is a Project Starter and Project Administrator
+writed in golang that help for start his project and is
+100 OPEN SOURCE.
 
-    Author: Moldy Community
-    Contact mail: moldycommunity@gmail.com
-    Repository: www.github.com/Moldy-Community/Cli
-    Web Page: www.moldy-community.github.io/web
+Author: Moldy Community
+Contact mail: moldycommunity@gmail.com
+Repository: www.github.com/Moldy-Community/Cli
+Web Page: www.moldy-community.github.io/web
 
-    -----------------------------------------------------
+-----------------------------------------------------
 
-    Made with love in Ecuador and Colombia.
+Made with love in Latin America.
 	`)
 }
