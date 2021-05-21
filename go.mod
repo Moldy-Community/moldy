@@ -3,7 +3,7 @@ module github.com/Moldy-Community/CLI
 go 1.16
 
 require (
-	github.com/fatih/color v1.7.0
+	github.com/fatih/color v1.11.0
 	github.com/joho/godotenv v1.3.0
 	github.com/manifoldco/promptui v0.8.0
 	github.com/mitchellh/go-homedir v1.1.0
