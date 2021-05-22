@@ -23,18 +23,21 @@ THE SOFTWARE.
 package utils
 
 import (
+	"time"
+
 	"go.uber.org/zap"
 )
 
 func CheckErrors(err error, code, msg, solution string) {
 
 	if err != nil {
-		logger := zap.NewExample().Sugar()
+		Error("NEW ERROR DETECTED \n")
+		logger, _ := zap.NewProduction()
 		defer logger.Sync()
-		logger.Infow(msg,
-			"code", code,
-			"solution", solution)
-	} else {
-		return
+		logger.Error(msg,
+			zap.String("code", code),
+			zap.String("solution", solution),
+			zap.Duration("timeDuration", time.Second),
+		)
 	}
 }
