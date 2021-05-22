@@ -31,21 +31,21 @@ For any other transtation make a pull request the spanish history is the origina
 2. Install Git
 3. Give me a star ⭐
 4. Make a Fork
-5. Clone the repository using git 
+5. Clone the repository using git
    ```
    git clone https://github.com/YOUR_USER/CLI.git
    ```
-6. Install the dependencies with: 
+6. Install the dependencies with:
    ```
    go mod tidy
    ```
 7. Run the CLI with:
    ```
    go run main.go --help
-   ``` 
-8. Make a new branch: 
    ```
-   git branch -M new-feat 
+8. Make a new branch:
+   ```
+   git branch -M new-feat
    ```
 9. Commit your changes with the guide [CONVENTIONAL COMMITS](https://www.conventionalcommits.org/en/v1.0.0/).
 
@@ -53,9 +53,10 @@ For any other transtation make a pull request the spanish history is the origina
 
 # ✔️ Authors
 
-1. @junix7 [here](https://linktr.ee/junix) Web Developer
-2. @TeoDev1611 [here](https://github.com/TeoDev1611) CLI, Documentation and Founder Developer
-3. @NikolaM-Dev [here](https://github.com/NikolaM-Dev) Icon Desing
+1. @junix7 [here](https://linktr.ee/junix) Web Developer (ノ・∀・)ノ
+2. @TeoDev1611 [here](https://github.com/TeoDev1611) CLI, Documentation and Founder Developer ↖(^▽^)↗
+3. @NikolaM-Dev [here](https://github.com/NikolaM-Dev) Icon Desing :-)
+4. @Polibov [here](https://github.com/SantiagoVA) API Creator :D
 
 # 📱  Social media
 
