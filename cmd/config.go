@@ -32,12 +32,15 @@ var createToogle bool
 var configCmd = &cobra.Command{
 	Use:   "config",
 	Short: "Configure moldy for best and custom usage :D",
-	Long: `A longer description that spans multiple lines and likely contains examples
-  and usage of using your command. For example:
+	Long: `Generate a config file with the basic specifications:
 
-  Cobra is a CLI library for Go that empowers applications.
-  This application is a tool to generate the needed files
-  to quickly create a Cobra application.`,
+Usage:
+
+moldy config --create
+moldy cfg -c
+
+This create a MoldyFile.toml in the current directory
+You can change the file manualy or by commands ( RECOMMENDED )`,
 	Run: func(cmd *cobra.Command, args []string) {
 		if createToogle {
 			functions.CreateConfigFile()
