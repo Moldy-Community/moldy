@@ -27,9 +27,8 @@ var versionCmd = &cobra.Command{
 	Long: `Show the version of Moldy:
 
 In error case:
-
-If you have any error report on Github for fix that
-in the next version :D`,
+  If you have any error report on Github for fix that
+  in the next version :D`,
 	Run: func(cmd *cobra.Command, args []string) {
 		utils.Info("Moldy 0.0.1 Alpha")
 	},

@@ -30,9 +30,8 @@ How contact to Moldy the repository ascii art etc :D
 Show a beautifull information about the Moldy project
 
 In error case:
-
-If you have any error report on Github for fix that
-in the next version :D`,
+  If you have any error report on Github for fix that
+  in the next version :D`,
 	Aliases: []string{"inf", "in"},
 	Example: "moldy info",
 	Run: func(cmd *cobra.Command, args []string) {
