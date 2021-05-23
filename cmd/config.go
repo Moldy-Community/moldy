@@ -28,20 +28,20 @@ var configCmd = &cobra.Command{
 	Short: "Configure moldy for best and custom usage :D",
 	Long: `Generate a config file with the basic specifications:
 
-Usage:
-
-moldy config --create
-moldy cfg -c
-
 This create a MoldyFile.toml in the current directory
-You can change the file manualy or by commands ( RECOMMENDED )`,
+You can change the file manualy or by commands ( RECOMMENDED )
+
+In error case:
+  If you have any error report on Github for fix that
+  in the next version :D
+`,
 	Run: func(cmd *cobra.Command, args []string) {
 		if createToogle {
 			functions.CreateConfigFile()
 		}
 	},
 	Example: "moldy config --create",
-	Aliases: []string{"cfg"},
+	Aliases: []string{"cfg", "c"},
 }
 
 func init() {
