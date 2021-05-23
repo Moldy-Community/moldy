@@ -26,10 +26,10 @@ var versionCmd = &cobra.Command{
 	Short: "Show the version of moldy :)",
 	Long: `Show the version of Moldy:
 
-[In error case]
+In error case:
 
-This show the current version of moldy any error
-Report on Github :D`,
+If you have any error report on Github for fix that
+in the next version :D`,
 	Run: func(cmd *cobra.Command, args []string) {
 		utils.Info("Moldy 0.0.1 Alpha")
 	},
