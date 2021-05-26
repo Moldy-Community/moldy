@@ -17,6 +17,7 @@ package cmd
 
 import (
 	"github.com/Moldy-Community/moldy/functions"
+	"github.com/Moldy-Community/moldy/utils"
 	"github.com/spf13/cobra"
 )
 
@@ -49,12 +50,25 @@ In error case:
 				functions.GenerateMVCTemplate()
 
 				functions.MoldyCfgFile(author, description, name, version)
-				functions.CreateConfigFile()
+				editApa := functions.BasicPrompt("Edit the aparience preferences ?", "yes")
+				if editApa == "yes" {
+					functions.AparienceChanges()
+					functions.CreateConfigFile()
+				} else {
+					utils.Info("Aparience not selected bye bye")
+				}
+
 			} else if pattern == "DDD" {
 				functions.GenerateDDDTemplate()
 
 				functions.MoldyCfgFile(author, description, name, version)
-				functions.CreateConfigFile()
+				editApa := functions.BasicPrompt("Edit the aparience preferences ?", "yes")
+				if editApa == "yes" {
+					functions.AparienceChanges()
+					functions.CreateConfigFile()
+				} else {
+					utils.Info("Aparience not selected bye bye")
+				}
 			}
 		} else if basicToggle {
 			name := functions.BasicPrompt("Name of the package", "Example package")
@@ -63,7 +77,13 @@ In error case:
 			description := functions.BasicPrompt("Description of the package", "Example package")
 			functions.GenerateBasicTemplate()
 			functions.MoldyCfgFile(author, name, version, description)
-			functions.CreateConfigFile()
+			editApa := functions.BasicPrompt("Edit the aparience preferences ?", "yes")
+			if editApa == "yes" {
+				functions.AparienceChanges()
+				functions.CreateConfigFile()
+			} else {
+				utils.Info("Aparience not selected bye bye")
+			}
 		}
 	},
 	Aliases: []string{"n", "generate"},
