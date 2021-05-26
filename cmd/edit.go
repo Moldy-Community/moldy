@@ -21,31 +21,32 @@ import (
 	"github.com/spf13/cobra"
 )
 
+var (
+	aparienceToggle bool
+	adminToggle     bool
+)
+
 // editCmd represents the edit command
 var editCmd = &cobra.Command{
 	Use:   "edit",
-	Short: "A brief description of your command",
-	Long: `A longer description that spans multiple lines and likely contains examples
-and usage of using your command. For example:
+	Short: "Edit Moldy File configuration of aparience and projects",
+	Long: `This command help you to edit the moldy config options
 
-Cobra is a CLI library for Go that empowers applications.
-This application is a tool to generate the needed files
-to quickly create a Cobra application.`,
+Run the edit command for change the aparience or the project configs
+with a beautiful terminal UI :D
+
+In error case:
+  If you have any error report on Github for fix that
+  in the next version :p`,
 	Run: func(cmd *cobra.Command, args []string) {
 		fmt.Println("edit called")
 	},
+	Aliases: []string{"e", "ed"},
+	Example: "moldy e -a or moldy ed -p",
 }
 
 func init() {
 	rootCmd.AddCommand(editCmd)
-
-	// Here you will define your flags and configuration settings.
-
-	// Cobra supports Persistent Flags which will work for this command
-	// and all subcommands, e.g.:
-	// editCmd.PersistentFlags().String("foo", "", "A help for foo")
-
-	// Cobra supports local flags which will only run when this command
-	// is called directly, e.g.:
-	// editCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
+	editCmd.Flags().BoolVarP(&aparienceToggle, "aparience", "a", false, "Toggle this flag for chage the aparience options")
+	editCmd.Flags().BoolVarP(&adminToggle, "project", "p", false, "Toggle this flag for chage the adminProject option :p")
 }
