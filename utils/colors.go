@@ -1,6 +1,8 @@
 package utils
 
 import (
+	"os"
+
 	colors "github.com/fatih/color"
 )
 
@@ -12,6 +14,7 @@ func Warn(msg string) {
 func Error(msg string) {
 	red := colors.New(colors.BgHiRed).Add(colors.Bold).Set().PrintlnFunc()
 	red(msg)
+	os.Exit(1)
 }
 
 func Info(msg string) {

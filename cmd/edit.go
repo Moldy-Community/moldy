@@ -18,6 +18,7 @@ package cmd
 import (
 	"fmt"
 
+	"github.com/Moldy-Community/moldy/functions"
 	"github.com/spf13/cobra"
 )
 
@@ -39,7 +40,11 @@ In error case:
   If you have any error report on Github for fix that
   in the next version :p`,
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("edit called")
+		if aparienceToggle {
+			functions.AparienceChanges()
+		} else if adminToggle {
+			fmt.Print("RUN THE PROJECT TOGGLE :D")
+		}
 	},
 	Aliases: []string{"e", "ed"},
 	Example: "moldy e -a or moldy ed -p",
