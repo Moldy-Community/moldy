@@ -61,6 +61,7 @@ In error case:
 			author := functions.BasicPrompt("Author name", "none")
 			version := functions.BasicPrompt("Version of the Package", "1.0")
 			description := functions.BasicPrompt("Description of the package", "Example package")
+			functions.GenerateBasicTemplate()
 			functions.MoldyCfgFile(author, name, version, description)
 			functions.CreateConfigFile()
 		}
