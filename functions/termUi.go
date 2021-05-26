@@ -1,7 +1,7 @@
 package functions
 
 import (
-	"github.com/Moldy-Community/CLI/utils"
+	"github.com/Moldy-Community/moldy/utils"
 
 	"github.com/manifoldco/promptui"
 )

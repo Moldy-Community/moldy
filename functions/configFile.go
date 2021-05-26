@@ -3,7 +3,7 @@ package functions
 import (
 	"os"
 
-	"github.com/Moldy-Community/CLI/utils"
+	"github.com/Moldy-Community/moldy/utils"
 	vp "github.com/spf13/viper"
 )
 

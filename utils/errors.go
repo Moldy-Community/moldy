@@ -23,21 +23,18 @@ THE SOFTWARE.
 package utils
 
 import (
-	"time"
-
-	"go.uber.org/zap"
+	"log"
 )
 
 func CheckErrors(err error, code, msg, solution string) {
 
 	if err != nil {
 		Error("NEW ERROR DETECTED \n")
-		logger, _ := zap.NewProduction()
-		defer logger.Sync()
-		logger.Error(msg,
-			zap.String("code", code),
-			zap.String("solution", solution),
-			zap.Duration("timeDuration", time.Second),
-		)
+		log.Fatalf(`
+    MSG: %v
+    CODE: %v
+    SOLUTION: %v
+    ERROR COMPLETE: %v
+    `, msg, code, solution, err)
 	}
 }

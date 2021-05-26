@@ -64,7 +64,7 @@ writed in golang that help for start his project and is
 
 Author: Moldy Community
 Contact mail: moldycommunity@gmail.com
-Repository: www.github.com/Moldy-Community/Cli
+Repository: www.github.com/Moldy-Community/moldy
 Web Page: www.moldy-community.github.io/web
 
 -----------------------------------------------------

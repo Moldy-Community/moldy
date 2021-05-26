@@ -4,7 +4,7 @@ import (
 	"os"
 	"text/template"
 
-	"github.com/Moldy-Community/CLI/utils"
+	"github.com/Moldy-Community/moldy/utils"
 )
 
 type ReadmeTmpl struct {

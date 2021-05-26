@@ -15,7 +15,7 @@ limitations under the License.
 */
 package main
 
-import "github.com/Moldy-Community/CLI/cmd"
+import "github.com/Moldy-Community/moldy/cmd"
 
 func main() {
 	cmd.Execute()

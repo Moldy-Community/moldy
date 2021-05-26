@@ -1,4 +1,4 @@
-module github.com/Moldy-Community/CLI
+module github.com/Moldy-Community/moldy
 
 go 1.16
 

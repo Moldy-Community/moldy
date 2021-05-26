@@ -16,7 +16,7 @@ limitations under the License.
 package cmd
 
 import (
-	"github.com/Moldy-Community/CLI/functions"
+	"github.com/Moldy-Community/moldy/functions"
 	"github.com/spf13/cobra"
 )
 
