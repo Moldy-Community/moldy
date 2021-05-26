@@ -56,6 +56,13 @@ In error case:
 				functions.MoldyCfgFile(author, description, name, version)
 				functions.CreateConfigFile()
 			}
+		} else if basicToggle {
+			name := functions.BasicPrompt("Name of the package", "Example package")
+			author := functions.BasicPrompt("Author name", "none")
+			version := functions.BasicPrompt("Version of the Package", "1.0")
+			description := functions.BasicPrompt("Description of the package", "Example package")
+			functions.MoldyCfgFile(author, name, version, description)
+			functions.CreateConfigFile()
 		}
 	},
 	Aliases: []string{"n", "generate"},
