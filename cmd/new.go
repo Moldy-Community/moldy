@@ -48,15 +48,20 @@ In error case:
 			pattern := functions.SelectPrompt("Select the desing pattern", []string{"MVC", "DDD"})
 			if pattern == "MVC" {
 				functions.GenerateMVCTemplate()
-
 				functions.MoldyCfgFile(author, description, name, version)
 				editApa := functions.BasicPrompt("Edit the aparience preferences ?", "yes")
 				if editApa == "yes" {
 					functions.AparienceChanges()
-					functions.CreateConfigFile()
 				} else {
 					utils.Info("Aparience not selected bye bye")
 				}
+				editAdmin := functions.BasicPrompt("Edit the adminitration project preferences ?", "yes")
+				if editAdmin == "yes" {
+					functions.ProjectChanges()
+				} else {
+					utils.Info("Edit the Administration project not selected bye bye")
+				}
+				functions.CreateConfigFile()
 
 			} else if pattern == "DDD" {
 				functions.GenerateDDDTemplate()
@@ -65,10 +70,16 @@ In error case:
 				editApa := functions.BasicPrompt("Edit the aparience preferences ?", "yes")
 				if editApa == "yes" {
 					functions.AparienceChanges()
-					functions.CreateConfigFile()
 				} else {
 					utils.Info("Aparience not selected bye bye")
 				}
+				editAdmin := functions.BasicPrompt("Edit the adminitration project preferences ?", "yes")
+				if editAdmin == "yes" {
+					functions.ProjectChanges()
+				} else {
+					utils.Info("Edit the Administration project not selected bye bye")
+				}
+				functions.CreateConfigFile()
 			}
 		} else if basicToggle {
 			name := functions.BasicPrompt("Name of the package", "Example package")
@@ -80,10 +91,16 @@ In error case:
 			editApa := functions.BasicPrompt("Edit the aparience preferences ?", "yes")
 			if editApa == "yes" {
 				functions.AparienceChanges()
-				functions.CreateConfigFile()
 			} else {
 				utils.Info("Aparience not selected bye bye")
 			}
+			editAdmin := functions.BasicPrompt("Edit the adminitration project preferences ?", "yes")
+			if editAdmin == "yes" {
+				functions.ProjectChanges()
+			} else {
+				utils.Info("Edit the Administration project not selected bye bye")
+			}
+			functions.CreateConfigFile()
 		}
 	},
 	Aliases: []string{"n", "generate"},
