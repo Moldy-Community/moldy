@@ -47,11 +47,13 @@ In error case:
 			pattern := functions.SelectPrompt("Select the desing pattern", []string{"MVC", "DDD"})
 			if pattern == "MVC" {
 				functions.GenerateMVCTemplate()
-				functions.ReadmeTmplGenerator(author, description, name, version)
+
+				functions.MoldyCfgFile(author, description, name, version)
 				functions.CreateConfigFile()
 			} else if pattern == "DDD" {
 				functions.GenerateDDDTemplate()
-				functions.ReadmeTmplGenerator(author, description, name, version)
+
+				functions.MoldyCfgFile(author, description, name, version)
 				functions.CreateConfigFile()
 			}
 		}

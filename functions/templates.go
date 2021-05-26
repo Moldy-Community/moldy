@@ -2,17 +2,10 @@ package functions
 
 import (
 	"os"
-	"text/template"
 
 	"github.com/Moldy-Community/moldy/utils"
+	"github.com/spf13/viper"
 )
-
-type ReadmeTmpl struct {
-	Author      string
-	Description string
-	Name        string
-	Version     string
-}
 
 var (
 	mvcFolders = []string{
@@ -33,19 +26,6 @@ var (
 		"config",
 	}
 )
-
-func parseTmpl(path string, content ReadmeTmpl) {
-	t, err := template.ParseFiles(path)
-	utils.CheckErrors(err, "Code 2", "Error in parse the template", "Check the permissions, or re run with the sudo or admin permissions or report the error on github")
-
-	f, err := os.Create(path)
-	utils.CheckErrors(err, "Code 2", "Error in write the file Readme Template", "Check the permissions, or re run with the sudo or admin permissions or report the error on github")
-
-	err = t.Execute(f, content)
-	utils.CheckErrors(err, "Code 2", "Error in get the content of the Readme Template", "Check the permissions, or re run with the sudo or admin permissions or report the error on github")
-
-	f.Close()
-}
 
 func GenerateMVCTemplate() {
 	for _, f := range mvcFolders {
@@ -71,7 +51,10 @@ func GenerateBasicTemplate() {
 	utils.Success("Succesfuly generated the basic Moldy template folder")
 }
 
-func ReadmeTmplGenerator(author, description, name, version string) {
-	val := ReadmeTmpl{Author: author, Description: description, Name: name, Version: version}
-	parseTmpl("./Readme.md", val)
+func MoldyCfgFile(author, name, version, description string) {
+	viper.Set("moldyPackages.name", name)
+	viper.Set("moldyPackages.author", author)
+	viper.Set("moldyPackages.version", version)
+	viper.Set("moldyPackages.description", description)
+	utils.Success("Succesfuly set the new values for the MoldyFile.toml")
 }
