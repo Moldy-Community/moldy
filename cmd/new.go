@@ -22,8 +22,9 @@ import (
 )
 
 var (
-	patternToogle bool
-	basicToggle   bool
+	patternToogle  bool
+	basicToggle    bool
+	dotFilesToggle bool
 )
 
 // newCmd represents the new command
@@ -73,7 +74,7 @@ In error case:
 				} else {
 					utils.Info("Aparience not selected bye bye")
 				}
-				editAdmin := core.BasicPrompt("Edit the adminitration project preferences ?", "yes")
+				editAdmin := core.BasicPrompt("Edit the administration project preferences ?", "yes")
 				if editAdmin == "yes" {
 					core.ProjectChanges()
 				} else {
@@ -101,6 +102,8 @@ In error case:
 				utils.Info("Edit the Administration project not selected bye bye")
 			}
 			core.CreateConfigFile()
+		} else if dotFilesToggle {
+			core.CreateDotFiles()
 		}
 	},
 	Aliases: []string{"n", "generate"},
@@ -111,4 +114,5 @@ func init() {
 	rootCmd.AddCommand(newCmd)
 	newCmd.Flags().BoolVarP(&patternToogle, "pattern", "p", false, "Generate a Moldy project with a desing pattern")
 	newCmd.Flags().BoolVarP(&basicToggle, "basic", "b", false, "Generate a Moldy project with a basic structure")
+	newCmd.Flags().BoolVarP(&dotFilesToggle, "dotfiles", "d", false, "Create a dot files for git, editor config etc")
 }
