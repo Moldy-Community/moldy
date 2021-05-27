@@ -1,6 +1,6 @@
 <div align="center">
   <p>
-    <img width="100" src="./docs/img/icon.png">
+    <img width="100" src="./assets/icon.png">
   </p>
   <h1>Moldy The best project starter of the world</h1>
 </div>
@@ -19,7 +19,7 @@ You don't know how to start your project ... you want to help other people know 
 
 ## 📃 Details about Moldy
 
-The Moldy history and philosopy is here:
+The Moldy history and philosophy is here:
 
 1. Spanish [here](./docs/history/HISTORY_ES.md)
 2. English [here](./docs/history/HISTORY_EN.md)
