@@ -1,4 +1,4 @@
-package functions
+package core
 
 import (
 	"github.com/Moldy-Community/moldy/utils"

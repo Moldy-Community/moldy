@@ -16,7 +16,7 @@ limitations under the License.
 package cmd
 
 import (
-	"github.com/Moldy-Community/moldy/functions"
+	"github.com/Moldy-Community/moldy/core"
 	"github.com/Moldy-Community/moldy/utils"
 	"github.com/spf13/cobra"
 )
@@ -41,66 +41,66 @@ In error case:
 `,
 	Run: func(cmd *cobra.Command, args []string) {
 		if patternToogle {
-			name := functions.BasicPrompt("Name of the package", "Example package")
-			author := functions.BasicPrompt("Author name", "none")
-			version := functions.BasicPrompt("Version of the Package", "1.0")
-			description := functions.BasicPrompt("Description of the package", "Example package")
-			pattern := functions.SelectPrompt("Select the desing pattern", []string{"MVC", "DDD"})
+			name := core.BasicPrompt("Name of the package", "Example package")
+			author := core.BasicPrompt("Author name", "none")
+			version := core.BasicPrompt("Version of the Package", "1.0")
+			description := core.BasicPrompt("Description of the package", "Example package")
+			pattern := core.SelectPrompt("Select the desing pattern", []string{"MVC", "DDD"})
 			if pattern == "MVC" {
-				functions.GenerateMVCTemplate()
-				functions.MoldyCfgFile(author, description, name, version)
-				editApa := functions.BasicPrompt("Edit the aparience preferences ?", "yes")
+				core.GenerateMVCTemplate()
+				core.MoldyCfgFile(author, description, name, version)
+				editApa := core.BasicPrompt("Edit the aparience preferences ?", "yes")
 				if editApa == "yes" {
-					functions.AparienceChanges()
+					core.AparienceChanges()
 				} else {
 					utils.Info("Aparience not selected bye bye")
 				}
-				editAdmin := functions.BasicPrompt("Edit the adminitration project preferences ?", "yes")
+				editAdmin := core.BasicPrompt("Edit the adminitration project preferences ?", "yes")
 				if editAdmin == "yes" {
-					functions.ProjectChanges()
+					core.ProjectChanges()
 				} else {
 					utils.Info("Edit the Administration project not selected bye bye")
 				}
-				functions.CreateConfigFile()
+				core.CreateConfigFile()
 
 			} else if pattern == "DDD" {
-				functions.GenerateDDDTemplate()
+				core.GenerateDDDTemplate()
 
-				functions.MoldyCfgFile(author, description, name, version)
-				editApa := functions.BasicPrompt("Edit the aparience preferences ?", "yes")
+				core.MoldyCfgFile(author, description, name, version)
+				editApa := core.BasicPrompt("Edit the aparience preferences ?", "yes")
 				if editApa == "yes" {
-					functions.AparienceChanges()
+					core.AparienceChanges()
 				} else {
 					utils.Info("Aparience not selected bye bye")
 				}
-				editAdmin := functions.BasicPrompt("Edit the adminitration project preferences ?", "yes")
+				editAdmin := core.BasicPrompt("Edit the adminitration project preferences ?", "yes")
 				if editAdmin == "yes" {
-					functions.ProjectChanges()
+					core.ProjectChanges()
 				} else {
 					utils.Info("Edit the Administration project not selected bye bye")
 				}
-				functions.CreateConfigFile()
+				core.CreateConfigFile()
 			}
 		} else if basicToggle {
-			name := functions.BasicPrompt("Name of the package", "Example package")
-			author := functions.BasicPrompt("Author name", "none")
-			version := functions.BasicPrompt("Version of the Package", "1.0")
-			description := functions.BasicPrompt("Description of the package", "Example package")
-			functions.GenerateBasicTemplate()
-			functions.MoldyCfgFile(author, name, version, description)
-			editApa := functions.BasicPrompt("Edit the aparience preferences ?", "yes")
+			name := core.BasicPrompt("Name of the package", "Example package")
+			author := core.BasicPrompt("Author name", "none")
+			version := core.BasicPrompt("Version of the Package", "1.0")
+			description := core.BasicPrompt("Description of the package", "Example package")
+			core.GenerateBasicTemplate()
+			core.MoldyCfgFile(author, name, version, description)
+			editApa := core.BasicPrompt("Edit the aparience preferences ?", "yes")
 			if editApa == "yes" {
-				functions.AparienceChanges()
+				core.AparienceChanges()
 			} else {
 				utils.Info("Aparience not selected bye bye")
 			}
-			editAdmin := functions.BasicPrompt("Edit the adminitration project preferences ?", "yes")
+			editAdmin := core.BasicPrompt("Edit the adminitration project preferences ?", "yes")
 			if editAdmin == "yes" {
-				functions.ProjectChanges()
+				core.ProjectChanges()
 			} else {
 				utils.Info("Edit the Administration project not selected bye bye")
 			}
-			functions.CreateConfigFile()
+			core.CreateConfigFile()
 		}
 	},
 	Aliases: []string{"n", "generate"},
