@@ -7,10 +7,10 @@
 
 <div align="center">
 
-![GithubTestBadge](https://img.shields.io/github/workflow/status/Moldy-Community/CLI/Go?label=Tests&logo=github)
-![Last Commit](https://img.shields.io/github/last-commit/Moldy-Community/CLI)
+![GithubTestBadge](https://img.shields.io/github/workflow/status/Moldy-Community/moldy/Go?label=Tests&logo=github)
+![Last Commit](https://img.shields.io/github/last-commit/Moldy-Community/moldy)
 ![DiscordBadge](https://img.shields.io/discord/842085043777831012?logo=discord&logoColor=white)
-![CLI STARS](https://img.shields.io/github/stars/Moldy-Community/CLI?style=social)
+![Moldy STARS](https://img.shields.io/github/stars/Moldy-Community/moldy?style=social)
 
 </div>
 
@@ -33,7 +33,7 @@ For any other transtation make a pull request the spanish history is the origina
 4. Make a Fork
 5. Clone the repository using git
    ```
-   git clone https://github.com/YOUR_USER/CLI.git
+   git clone https://github.com/YOUR_USER/moldy.git
    ```
 6. Install the dependencies with:
    ```
@@ -53,20 +53,17 @@ For any other transtation make a pull request the spanish history is the origina
 
 # ✔️ Authors
 
-1. @junix7 [here](https://linktr.ee/junix) Web Developer (ノ・∀・)ノ
-2. @TeoDev1611 [here](https://github.com/TeoDev1611) CLI, Documentation and Founder Developer ↖(^▽^)↗
-3. @NikolaM-Dev [here](https://github.com/NikolaM-Dev) Icon Desing :-)
-4. @Polibov [here](https://github.com/SantiagoVA) API Creator :D
+All authors of moldy are detailed in the book **[here](https://moldybook.netlify.app/docs)**
 
 # 📱  Social media
 
 Moldy is on the following social networks
 
-1. [Twitter](https://twitter.com/Moldy-Community)
+1. [Twitter](https://twitter.com/CommunityMoldy)
 2. [Discord](https://discord.gg/2uwzhmJdfw)
 3. [Github](https://github.com/Moldy-Community)
 
 
 ---
 
-Made with ❤️ in Ecuador
+Made with ❤️ in the world
