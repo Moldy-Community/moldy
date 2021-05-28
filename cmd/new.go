@@ -85,6 +85,7 @@ In error case:
 		} else if basicToggle {
 			name := core.BasicPrompt("Name of the package", "Example package")
 			author := core.BasicPrompt("Author name", "none")
+
 			version := core.BasicPrompt("Version of the Package", "1.0")
 			description := core.BasicPrompt("Description of the package", "Example package")
 			core.GenerateBasicTemplate()
