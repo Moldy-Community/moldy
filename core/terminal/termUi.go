@@ -1,4 +1,4 @@
-package core
+package terminal
 
 import (
 	"github.com/Moldy-Community/moldy/utils"

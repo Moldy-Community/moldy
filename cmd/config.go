@@ -16,7 +16,7 @@ limitations under the License.
 package cmd
 
 import (
-	"github.com/Moldy-Community/moldy/core"
+	"github.com/Moldy-Community/moldy/core/config"
 	"github.com/spf13/cobra"
 )
 
@@ -37,7 +37,7 @@ In error case:
 `,
 	Run: func(cmd *cobra.Command, args []string) {
 		if createToogle {
-			core.CreateConfigFile()
+			config.CreateConfigFile()
 		}
 	},
 	Example: "moldy config --create",

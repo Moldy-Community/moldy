@@ -16,7 +16,9 @@ limitations under the License.
 package cmd
 
 import (
-	"github.com/Moldy-Community/moldy/core"
+	"github.com/Moldy-Community/moldy/core/config"
+	files "github.com/Moldy-Community/moldy/core/files"
+	"github.com/Moldy-Community/moldy/core/terminal"
 	"github.com/Moldy-Community/moldy/utils"
 	"github.com/spf13/cobra"
 )
@@ -42,69 +44,69 @@ In error case:
 `,
 	Run: func(cmd *cobra.Command, args []string) {
 		if patternToogle {
-			name := core.BasicPrompt("Name of the package", "Example package")
-			author := core.BasicPrompt("Author name", "none")
-			version := core.BasicPrompt("Version of the Package", "1.0")
-			description := core.BasicPrompt("Description of the package", "Example package")
-			pattern := core.SelectPrompt("Select the desing pattern", []string{"MVC", "DDD"})
+			name := terminal.BasicPrompt("Name of the package", "Example package")
+			author := terminal.BasicPrompt("Author name", "none")
+			version := terminal.BasicPrompt("Version of the Package", "1.0")
+			description := terminal.BasicPrompt("Description of the package", "Example package")
+			pattern := terminal.SelectPrompt("Select the desing pattern", []string{"MVC", "DDD"})
 			if pattern == "MVC" {
-				core.GenerateMVCTemplate()
-				core.MoldyCfgFile(author, description, name, version)
-				editApa := core.BasicPrompt("Edit the aparience preferences ?", "yes")
+				files.GenerateMVCTemplate()
+				files.MoldyCfgFile(author, description, name, version)
+				editApa := terminal.BasicPrompt("Edit the aparience preferences ?", "yes")
 				if editApa == "yes" {
-					core.AparienceChanges()
+					files.AparienceChanges()
 				} else {
 					utils.Info("Aparience not selected bye bye")
 				}
-				editAdmin := core.BasicPrompt("Edit the adminitration project preferences ?", "yes")
+				editAdmin := terminal.BasicPrompt("Edit the adminitration project preferences ?", "yes")
 				if editAdmin == "yes" {
-					core.ProjectChanges()
+					files.ProjectChanges()
 				} else {
 					utils.Info("Edit the Administration project not selected bye bye")
 				}
-				core.CreateConfigFile()
+				config.CreateConfigFile()
 
 			} else if pattern == "DDD" {
-				core.GenerateDDDTemplate()
+				files.GenerateDDDTemplate()
 
-				core.MoldyCfgFile(author, description, name, version)
-				editApa := core.BasicPrompt("Edit the aparience preferences ?", "yes")
+				files.MoldyCfgFile(author, description, name, version)
+				editApa := terminal.BasicPrompt("Edit the aparience preferences ?", "yes")
 				if editApa == "yes" {
-					core.AparienceChanges()
+					files.AparienceChanges()
 				} else {
 					utils.Info("Aparience not selected bye bye")
 				}
-				editAdmin := core.BasicPrompt("Edit the administration project preferences ?", "yes")
+				editAdmin := terminal.BasicPrompt("Edit the administration project preferences ?", "yes")
 				if editAdmin == "yes" {
-					core.ProjectChanges()
+					files.ProjectChanges()
 				} else {
 					utils.Info("Edit the Administration project not selected bye bye")
 				}
-				core.CreateConfigFile()
+				config.CreateConfigFile()
 			}
 		} else if basicToggle {
-			name := core.BasicPrompt("Name of the package", "Example package")
-			author := core.BasicPrompt("Author name", "none")
+			name := terminal.BasicPrompt("Name of the package", "Example package")
+			author := terminal.BasicPrompt("Author name", "none")
 
-			version := core.BasicPrompt("Version of the Package", "1.0")
-			description := core.BasicPrompt("Description of the package", "Example package")
-			core.GenerateBasicTemplate()
-			core.MoldyCfgFile(author, name, version, description)
-			editApa := core.BasicPrompt("Edit the aparience preferences ?", "yes")
+			version := terminal.BasicPrompt("Version of the Package", "1.0")
+			description := terminal.BasicPrompt("Description of the package", "Example package")
+			files.GenerateBasicTemplate()
+			files.MoldyCfgFile(author, name, version, description)
+			editApa := terminal.BasicPrompt("Edit the aparience preferences ?", "yes")
 			if editApa == "yes" {
-				core.AparienceChanges()
+				files.AparienceChanges()
 			} else {
 				utils.Info("Aparience not selected bye bye")
 			}
-			editAdmin := core.BasicPrompt("Edit the adminitration project preferences ?", "yes")
+			editAdmin := terminal.BasicPrompt("Edit the adminitration project preferences ?", "yes")
 			if editAdmin == "yes" {
-				core.ProjectChanges()
+				files.ProjectChanges()
 			} else {
 				utils.Info("Edit the Administration project not selected bye bye")
 			}
-			core.CreateConfigFile()
+			config.CreateConfigFile()
 		} else if dotFilesToggle {
-			core.CreateDotFiles()
+			files.CreateDotFiles()
 		}
 	},
 	Aliases: []string{"n", "generate"},

@@ -1,20 +1,21 @@
-package core
+package files
 
 import (
 	"io/ioutil"
 
+	"github.com/Moldy-Community/moldy/core/terminal"
 	"github.com/Moldy-Community/moldy/utils"
 )
 
 func CreateDotFiles() {
 	/* Define the basic questions of dot files */
-	ediCfg := BasicPrompt("Create editor config file defaults ?", "yes")
-	gitIgno := BasicPrompt("Create a .gitignore file with defaults ?", "yes")
+	ediCfg := terminal.BasicPrompt("Create editor config file defaults ?", "yes")
+	gitIgno := terminal.BasicPrompt("Create a .gitignore file with defaults ?", "yes")
 	/* Ask to create the other files  */
 	utils.Info("All dot files toggle create other files ? ")
-	otherFil := BasicPrompt("Create other files Example: README.md, LICENSE ? ", "yes")
-	readme := BasicPrompt("Create a example README.md ? ", "yes")
-	licenseFile := BasicPrompt("Create a LICENSE file ? LICENSE: Apache 2.0", "yes")
+	otherFil := terminal.BasicPrompt("Create other files Example: README.md, LICENSE ? ", "yes")
+	readme := terminal.BasicPrompt("Create a example README.md ? ", "yes")
+	licenseFile := terminal.BasicPrompt("Create a LICENSE file ? LICENSE: Apache 2.0", "yes")
 
 	/* Write and switch in the dot files */
 

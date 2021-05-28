@@ -1,6 +1,7 @@
-package core
+package files
 
 import (
+	"github.com/Moldy-Community/moldy/core/terminal"
 	"github.com/Moldy-Community/moldy/utils"
 	"github.com/spf13/viper"
 )
@@ -8,9 +9,9 @@ import (
 func AparienceChanges() {
 	/* Define the prompts questions */
 
-	pgb := BasicPrompt("Show a progress bar? OPTIONS: [yes, no]", "yes")
-	asciiArt := BasicPrompt("Show a Moldy Ascii art? OPTIONS: [yes, no]", "yes")
-	colors := BasicPrompt("Show a color output ? OPTIONS: [ yes, no ]", "yes")
+	pgb := terminal.BasicPrompt("Show a progress bar? OPTIONS: [yes, no]", "yes")
+	asciiArt := terminal.BasicPrompt("Show a Moldy Ascii art? OPTIONS: [yes, no]", "yes")
+	colors := terminal.BasicPrompt("Show a color output ? OPTIONS: [ yes, no ]", "yes")
 
 	/* Switch in the options  */
 
@@ -52,11 +53,11 @@ func ProjectChanges() {
 
 	/* Define the prompts questions */
 
-	iniGit := BasicPrompt("Initialize git ? OPTIONS: [yes, no]", "yes")
-	convenCommits := BasicPrompt("Use the conventional commits tool ? OPTIONS: [yes, no]", "yes")
-	convenWorkflows := BasicPrompt("Use the conventional workflows ? OPTIONS: [yes, no]", "yes")
-	semverUsage := BasicPrompt("Usage the semantic versioning ? OPTIONS: [yes, no]", "yes")
-	changeLogGen := BasicPrompt("Usage the change log Generator ? OPTIONS: [yes, no]", "yes")
+	iniGit := terminal.BasicPrompt("Initialize git ? OPTIONS: [yes, no]", "yes")
+	convenCommits := terminal.BasicPrompt("Use the conventional commits tool ? OPTIONS: [yes, no]", "yes")
+	convenWorkflows := terminal.BasicPrompt("Use the conventional workflows ? OPTIONS: [yes, no]", "yes")
+	semverUsage := terminal.BasicPrompt("Usage the semantic versioning ? OPTIONS: [yes, no]", "yes")
+	changeLogGen := terminal.BasicPrompt("Usage the change log Generator ? OPTIONS: [yes, no]", "yes")
 
 	/* Switch in the options  */
 
