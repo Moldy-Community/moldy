@@ -3,7 +3,7 @@ package config
 import (
 	"os"
 
-	"github.com/Moldy-Community/moldy/utils"
+	"github.com/Moldy-Community/moldy/utils/functions"
 	vp "github.com/spf13/viper"
 )
 
@@ -50,7 +50,7 @@ func CreateConfigFile() {
 	if err := vp.SafeWriteConfigAs(configName); err != nil {
 		if os.IsNotExist(err) {
 			err = vp.WriteConfigAs(configName)
-			utils.CheckErrors(err, "Code 2", "Error in write the config file :(", "Report the error on github or re try the command with new permmisions")
+			functions.CheckErrors(err, "Code 2", "Error in write the config file :(", "Report the error on github or re try the command with new permmisions")
 		}
 	}
 }

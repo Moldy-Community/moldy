@@ -20,16 +20,18 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-package utils
+package functions
 
 import (
 	"log"
+
+	"github.com/Moldy-Community/moldy/utils/colors"
 )
 
 func CheckErrors(err error, code, msg, solution string) {
 
 	if err != nil {
-		Error("NEW ERROR DETECTED \n")
+		colors.Error("NEW ERROR DETECTED \n")
 		log.Fatalf(`
     MSG: %v
     CODE: %v

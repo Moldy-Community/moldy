@@ -19,7 +19,7 @@ import (
 	"github.com/Moldy-Community/moldy/core/config"
 	files "github.com/Moldy-Community/moldy/core/files"
 	"github.com/Moldy-Community/moldy/core/terminal"
-	"github.com/Moldy-Community/moldy/utils"
+	"github.com/Moldy-Community/moldy/utils/colors"
 	"github.com/spf13/cobra"
 )
 
@@ -56,13 +56,13 @@ In error case:
 				if editApa == "yes" {
 					files.AparienceChanges()
 				} else {
-					utils.Info("Aparience not selected bye bye")
+					colors.Info("Aparience not selected bye bye")
 				}
 				editAdmin := terminal.BasicPrompt("Edit the adminitration project preferences ?", "yes")
 				if editAdmin == "yes" {
 					files.ProjectChanges()
 				} else {
-					utils.Info("Edit the Administration project not selected bye bye")
+					colors.Info("Edit the Administration project not selected bye bye")
 				}
 				config.CreateConfigFile()
 
@@ -74,13 +74,13 @@ In error case:
 				if editApa == "yes" {
 					files.AparienceChanges()
 				} else {
-					utils.Info("Aparience not selected bye bye")
+					colors.Info("Aparience not selected bye bye")
 				}
 				editAdmin := terminal.BasicPrompt("Edit the administration project preferences ?", "yes")
 				if editAdmin == "yes" {
 					files.ProjectChanges()
 				} else {
-					utils.Info("Edit the Administration project not selected bye bye")
+					colors.Info("Edit the Administration project not selected bye bye")
 				}
 				config.CreateConfigFile()
 			}
@@ -96,13 +96,13 @@ In error case:
 			if editApa == "yes" {
 				files.AparienceChanges()
 			} else {
-				utils.Info("Aparience not selected bye bye")
+				colors.Info("Aparience not selected bye bye")
 			}
 			editAdmin := terminal.BasicPrompt("Edit the adminitration project preferences ?", "yes")
 			if editAdmin == "yes" {
 				files.ProjectChanges()
 			} else {
-				utils.Info("Edit the Administration project not selected bye bye")
+				colors.Info("Edit the Administration project not selected bye bye")
 			}
 			config.CreateConfigFile()
 		} else if dotFilesToggle {

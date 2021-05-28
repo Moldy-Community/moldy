@@ -1,7 +1,7 @@
 package terminal
 
 import (
-	"github.com/Moldy-Community/moldy/utils"
+	"github.com/Moldy-Community/moldy/utils/functions"
 
 	"github.com/manifoldco/promptui"
 )
@@ -12,7 +12,7 @@ func BasicPrompt(Label, Default string) string {
 		Default: Default,
 	}
 	result, err := prompt.Run()
-	utils.CheckErrors(err, "Code 3", "Error in the input of the user", "Re run the command for fix the input with the chars utf-8")
+	functions.CheckErrors(err, "Code 3", "Error in the input of the user", "Re run the command for fix the input with the chars utf-8")
 	return result
 }
 
@@ -22,7 +22,7 @@ func PasswordPrompt(Label string) string {
 		Mask:  '#',
 	}
 	result, err := prompt.Run()
-	utils.CheckErrors(err, "Code 3", "Error in the input of the user", "Re run the command for fix the input with utf-8 chars")
+	functions.CheckErrors(err, "Code 3", "Error in the input of the user", "Re run the command for fix the input with utf-8 chars")
 	return result
 }
 
@@ -32,7 +32,7 @@ func SelectPrompt(Label string, Items []string) string {
 		Items: Items,
 	}
 	_, result, err := prompt.Run()
-	utils.CheckErrors(err, "Code 3", "Error in the input of the user", "Re run the command for fix the input with a valid option")
+	functions.CheckErrors(err, "Code 3", "Error in the input of the user", "Re run the command for fix the input with a valid option")
 	return result
 }
 func YesNoQuestion(Label string) string {
@@ -42,6 +42,6 @@ func YesNoQuestion(Label string) string {
 	}
 	result, err := pmp.Run()
 
-	utils.CheckErrors(err, "Code 3", "Error in the yes no question", "Re run the command for fix the input with a valid option")
+	functions.CheckErrors(err, "Code 3", "Error in the yes no question", "Re run the command for fix the input with a valid option")
 	return result
 }

@@ -1,4 +1,4 @@
-package utils
+package functions
 
 import (
 	"github.com/matthewhartstonge/argon2"

@@ -4,7 +4,8 @@ import (
 	"io/ioutil"
 
 	"github.com/Moldy-Community/moldy/core/terminal"
-	"github.com/Moldy-Community/moldy/utils"
+	"github.com/Moldy-Community/moldy/utils/colors"
+	"github.com/Moldy-Community/moldy/utils/functions"
 )
 
 func CreateDotFiles() {
@@ -12,7 +13,7 @@ func CreateDotFiles() {
 	ediCfg := terminal.BasicPrompt("Create editor config file defaults ?", "yes")
 	gitIgno := terminal.BasicPrompt("Create a .gitignore file with defaults ?", "yes")
 	/* Ask to create the other files  */
-	utils.Info("All dot files toggle create other files ? ")
+	colors.Info("All dot files toggle create other files ? ")
 	otherFil := terminal.BasicPrompt("Create other files Example: README.md, LICENSE ? ", "yes")
 	readme := terminal.BasicPrompt("Create a example README.md ? ", "yes")
 	licenseFile := terminal.BasicPrompt("Create a LICENSE file ? LICENSE: Apache 2.0", "yes")
@@ -42,11 +43,11 @@ Made by Moldy CLI
 
 `)
 		err := ioutil.WriteFile("./.editorconfig", editcfgCont, 0666)
-		utils.CheckErrors(err, "Code 2", "Error in generate the .editorconfig file", "Check the permissions, or re run with the sudo or admin permissions or report the error on github")
+		functions.CheckErrors(err, "Code 2", "Error in generate the .editorconfig file", "Check the permissions, or re run with the sudo or admin permissions or report the error on github")
 	case "no":
-		utils.Info("Ok skipping the creation .editorconfig file")
+		colors.Info("Ok skipping the creation .editorconfig file")
 	default:
-		utils.Error("Error option not found :c")
+		colors.Error("Error option not found :c")
 	}
 	switch gitIgno {
 	case "yes":
@@ -70,12 +71,12 @@ Made by Moldy CLI
     ##################################
     `)
 		err := ioutil.WriteFile("./.gitignore", gitignoreCont, 0666)
-		utils.CheckErrors(err, "Code 2", "Error in generate the .gitignore file", "Check the permissions, or re run with the sudo or admin permissions or report the error on github")
+		functions.CheckErrors(err, "Code 2", "Error in generate the .gitignore file", "Check the permissions, or re run with the sudo or admin permissions or report the error on github")
 
 	case "no":
-		utils.Info("Ok skipping the creation .gitignore file")
+		colors.Info("Ok skipping the creation .gitignore file")
 	default:
-		utils.Error("Error option not found :c")
+		colors.Error("Error option not found :c")
 	}
 
 	/* Validate the other files input */
@@ -99,11 +100,11 @@ Made by Moldy CLI
 
       `)
 			err := ioutil.WriteFile("./README.md", readmeCont, 0666)
-			utils.CheckErrors(err, "Code 2", "Error in generate the README.md file", "Check the permissions, or re run with the sudo or admin permissions or report the error on github")
+			functions.CheckErrors(err, "Code 2", "Error in generate the README.md file", "Check the permissions, or re run with the sudo or admin permissions or report the error on github")
 		case "no":
-			utils.Info("Ok skipping the creation README.md file")
+			colors.Info("Ok skipping the creation README.md file")
 		default:
-			utils.Error("Error option not found :c")
+			colors.Error("Error option not found :c")
 		}
 
 		switch licenseFile {
@@ -129,11 +130,11 @@ limitations under the License.
       `)
 
 			err := ioutil.WriteFile("./LICENSE", licenseContent, 0666)
-			utils.CheckErrors(err, "Code 2", "Error in generate the LICENSE file", "Check the permissions, or re run with the sudo or admin permissions or report the error on github")
+			functions.CheckErrors(err, "Code 2", "Error in generate the LICENSE file", "Check the permissions, or re run with the sudo or admin permissions or report the error on github")
 		case "no":
-			utils.Info("Ok skipping the creation LICENSE file")
+			colors.Info("Ok skipping the creation LICENSE file")
 		default:
-			utils.Error("Error option not found :c")
+			colors.Error("Error option not found :c")
 		}
 	}
 }
