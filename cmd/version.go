@@ -32,10 +32,10 @@ In error case:
 	Run: func(cmd *cobra.Command, args []string) {
 		colors.Info("Moldy 0.0.1 Alpha")
 	},
-	Aliases: []string{"v", "ver"},
-	Example: "moldy version",
+	Aliases:           []string{"v", "ver"},
+	Example:           "moldy version",
+	DisableAutoGenTag: true,
 }
-versionCmd.DisableAutoGenTag = true
 
 func init() {
 	rootCmd.AddCommand(versionCmd)
