@@ -33,22 +33,35 @@ For any other transtation make a pull request the spanish history is the origina
 4. Give me a star ⭐
 5. Make a Fork
 6. Clone the repository using git
-   ```
-   git clone https://github.com/YOUR_USER/moldy.git
-   ```
+
+```
+
+git clone https://github.com/YOUR_USER/moldy.git
+
+```   
 7. Install the dependencies with:
-   ```
-  just dependencies 
-   ```
+   
+```
+
+just dependencies 
+   
+```
 8. Run the CLI with:
-   ```
-   just r -h
-   ```
+
+```
+  
+just r -h
+
+```
 9. Make a new branch:
-   ```
-   just b new-feat
-   ```
+
+ ```
+
+ just b new-feat
+
+ ```
 10. Commit your changes with the guide [CONVENTIONAL COMMITS](https://www.conventionalcommits.org/en/v1.0.0/) installing the manager called commitizen run this commands:
+
 ```
 # INSTALL PYTHON FOR THIS COMMAND
 
