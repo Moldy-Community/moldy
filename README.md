@@ -29,27 +29,44 @@ For any other transtation make a pull request the spanish history is the origina
 ## 🧐 Contribute
 1. Install Golang
 2. Install Git
-3. Give me a star ⭐
-4. Make a Fork
-5. Clone the repository using git
+3. Install just [here](https://github.com/casey/just)
+4. Give me a star ⭐
+5. Make a Fork
+6. Clone the repository using git
    ```
    git clone https://github.com/YOUR_USER/moldy.git
    ```
-6. Install the dependencies with:
+7. Install the dependencies with:
    ```
-   go mod tidy
+  just dependencies 
    ```
-7. Run the CLI with:
+8. Run the CLI with:
    ```
-   go run main.go --help
+   just r -h
    ```
-8. Make a new branch:
+9. Make a new branch:
    ```
-   git branch -M new-feat
+   just b new-feat
    ```
-9. Commit your changes with the guide [CONVENTIONAL COMMITS](https://www.conventionalcommits.org/en/v1.0.0/).
+10. Commit your changes with the guide [CONVENTIONAL COMMITS](https://www.conventionalcommits.org/en/v1.0.0/) installing the manager called commitizen run this commands:
+```
+# INSTALL PYTHON FOR THIS COMMAND
 
-10. Make a pull request describing the new feature and if pass the tests we accept your pull request or if not pass, will explain why.
+just pypi
+
+# INSTALL HOMEBREW FOR THIS COMMAND
+
+just homebrew
+
+# AFTER THAT RUN
+
+just c
+
+# SELECT THE OPTIONS AND SUCCESFULY COMMIT CREATED
+
+```
+
+11. Make a pull request describing the new feature and if pass the tests we accept your pull request or if not pass, will explain why.
 
 # ✔️ Authors
 
