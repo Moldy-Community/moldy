@@ -46,3 +46,9 @@ commit:
   echo "Running commitizen..."
   cz c
   echo "Finished the commit :D"
+
+
+push:
+  echo "Pushing to main ..."
+  git push -u origin main
+  echo "Finished the push"
