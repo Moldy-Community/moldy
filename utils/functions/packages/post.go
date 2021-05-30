@@ -40,7 +40,7 @@ func Create() (getOne, error) {
 		return dataStruct, errors.New(dataStruct.Message)
 	}
 
-	fmt.Printf("Created successfully\nThis is the data of the package created:\nName: %v\nAuthor: %v\nDescription: %v\nURL: %v\nVersion: %v\n", dataStruct.Data.Name, dataStruct.Data.Author, dataStruct.Data.Description, dataStruct.Data.Url, dataStruct.Data.Version)
+	fmt.Printf("Created successfully\nThis is the data of the package created:\nID: %v\nName: %v\nAuthor: %v\nDescription: %v\nURL: %v\nVersion: %v\n", dataStruct.Data.Id, dataStruct.Data.Name, dataStruct.Data.Author, dataStruct.Data.Description, dataStruct.Data.Url, dataStruct.Data.Version)
 	fmt.Println("If some of this data not is correct you can update it using\nmoldy update <id>\nGo to the docs to know more about this command")
 	return dataStruct, nil
 }
