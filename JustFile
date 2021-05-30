@@ -1,0 +1,46 @@
+
+alias pypi := pypi-commit-installer
+alias homebrew := homebrew-commit-installer
+alias c := commit
+alias r := run
+alias dep := dependencies
+alias i := install
+alias b := branch
+
+default:
+  echo "Just commands"
+  just --list
+
+branch NAME:
+  echo "Running the git branch new"
+  git branch -M {{NAME}}
+
+run COMMAND:
+  echo "Running moldy .."
+  go run main.go {{COMMAND}}
+  echo "Succesfully runned the command"
+
+install:
+  echo "Installing moldy .."
+  go install
+  echo "Succesfully installed run: moldy -h"
+
+dependencies:
+  echo "Installing the dependencies ..."
+  go mod tidy
+  echo "Succesfully installed"
+
+pypi-commit-installer:
+  echo "Installing commitizen ..."
+  pip install commitizen 
+  echo "Succesfully installed commitizen :D"
+
+homebrew-commit-installer:
+  echo "Installing commitizen by Homebrew ..."
+  brew install commitizen
+  echo "Succesfully installed commitizen :p"
+
+commit:
+  echo "Running commitizen..."
+  cz c
+  echo "Finished the commit :D"
