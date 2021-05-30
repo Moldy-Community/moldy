@@ -28,13 +28,13 @@ var completionCmd = &cobra.Command{
 
 Bash:
 
-  $ source <(yourprogram completion bash)
+  $ source <(moldy completion bash)
 
   # To load completions for each session, execute once:
   # Linux:
-  $ yourprogram completion bash > /etc/bash_completion.d/yourprogram
+  $ moldy completion bash > /etc/bash_completion.d/moldy
   # macOS:
-  $ yourprogram completion bash > /usr/local/etc/bash_completion.d/yourprogram
+  $ moldy completion bash > /usr/local/etc/bash_completion.d/moldy
 
 Zsh:
 
@@ -44,28 +44,34 @@ Zsh:
   $ echo "autoload -U compinit; compinit" >> ~/.zshrc
 
   # To load completions for each session, execute once:
-  $ yourprogram completion zsh > "${fpath[1]}/_yourprogram"
+  $ moldy completion zsh > "${fpath[1]}/_moldy"
 
   # You will need to start a new shell for this setup to take effect.
 
 fish:
 
-  $ yourprogram completion fish | source
+  $ moldy completion fish | source
 
   # To load completions for each session, execute once:
-  $ yourprogram completion fish > ~/.config/fish/completions/yourprogram.fish
+  $ moldy completion fish > ~/.config/fish/completions/moldy.fish
 
 PowerShell:
 
-  PS> yourprogram completion powershell | Out-String | Invoke-Expression
+  PS> moldy completion powershell | Out-String | Invoke-Expression
 
   # To load completions for every new session, run:
-  PS> yourprogram completion powershell > yourprogram.ps1
+  PS> moldy completion powershell > moldy.ps1
   # and source this file from your PowerShell profile.
+
+In error case:
+  If you have any error report on Github for fix that
+  in the next version :D
 `,
 	DisableFlagsInUseLine: true,
 	ValidArgs:             []string{"bash", "zsh", "fish", "powershell"},
 	Args:                  cobra.ExactValidArgs(1),
+	Aliases:               []string{"comp"},
+	Example:               "moldy comp bash",
 	Run: func(cmd *cobra.Command, args []string) {
 		switch args[0] {
 		case "bash":
@@ -78,4 +84,8 @@ PowerShell:
 			cmd.Root().GenPowerShellCompletionWithDesc(os.Stdout)
 		}
 	},
+}
+
+func init() {
+	rootCmd.AddCommand(completionCmd)
 }

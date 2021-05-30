@@ -32,7 +32,7 @@ dependencies:
 
 pypi-commit-installer:
   echo "Installing commitizen ..."
-  pip install commitizen 
+  pip install commitizen
   echo "Succesfully installed commitizen :D"
 
 homebrew-commit-installer:
@@ -41,6 +41,14 @@ homebrew-commit-installer:
   echo "Succesfully installed commitizen :p"
 
 commit:
+  echo "Adding to staging area"
+  git add .
   echo "Running commitizen..."
   cz c
   echo "Finished the commit :D"
+
+
+push:
+  echo "Pushing to main ..."
+  git push -u origin main
+  echo "Finished the push"
