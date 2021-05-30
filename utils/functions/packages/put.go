@@ -6,6 +6,7 @@ import (
 	"fmt"
 
 	"github.com/Moldy-Community/moldy/core/terminal"
+	"github.com/Moldy-Community/moldy/utils/colors"
 	"github.com/Moldy-Community/moldy/utils/functions"
 	"github.com/go-resty/resty/v2"
 )
@@ -21,7 +22,7 @@ func Update(id string) (getOne, error) {
 	newPassword := terminal.PasswordPrompt("New password")
 
 	if name == "" || author == "" || url == "" || description == "" || version == "" || password == "" || newPassword == "" {
-		fmt.Println("Please fill all blanks")
+		colors.Warn("Fill all blanks")
 		return dataStruct, errors.New("Fill all blanks")
 	}
 
@@ -37,10 +38,11 @@ func Update(id string) (getOne, error) {
 	}
 
 	if dataStruct.Error {
-		fmt.Println(dataStruct.Message)
+		colors.Error(dataStruct.Message)
 		return dataStruct, errors.New(dataStruct.Message)
 	}
 
-	fmt.Printf("\nUpdated successfully\nThis is the data of the package now:\nID: %v\nName: %v\nAuthor: %v\nDescription: %v\nURL: %v\nVersion: %v\n", dataStruct.Data.Id, dataStruct.Data.Name, dataStruct.Data.Author, dataStruct.Data.Description, dataStruct.Data.Url, dataStruct.Data.Version)
+	colors.Success("Updated successfully")
+	fmt.Printf("\nThis is the data of the package now:\nID: %v\nName: %v\nAuthor: %v\nDescription: %v\nURL: %v\nVersion: %v\n", dataStruct.Data.Id, dataStruct.Data.Name, dataStruct.Data.Author, dataStruct.Data.Description, dataStruct.Data.Url, dataStruct.Data.Version)
 	return dataStruct, nil
 }
