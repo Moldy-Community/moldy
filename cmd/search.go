@@ -3,7 +3,6 @@ package cmd
 import (
 	"fmt"
 	"os"
-	"strconv"
 
 	"github.com/Moldy-Community/moldy/utils/functions/packages"
 	"github.com/olekukonko/tablewriter"
@@ -24,17 +23,21 @@ var searchCmd = &cobra.Command{
 		} else {
 			if args[0] == "by-name" || args[0] == "by-n" {
 				getData, err := packages.GetSearch(args[1])
+
 				if err != nil {
-					fmt.Println("This name not match with any package")
+					fmt.Println(err)
 					return
 				}
+
 				data := getData.Data
 				var dataTable [][]string
-				for i, value := range data {
-					dataTable = append(dataTable, []string{strconv.Itoa(i + 1), value.Author, value.Name, value.Url, value.Version, value.Id})
+
+				for _, value := range data {
+					dataTable = append(dataTable, []string{value.Name, value.Url, value.Id})
 				}
+
 				table := tablewriter.NewWriter(os.Stdout)
-				table.SetHeader([]string{"Number", "Author", "Name", "URL", "Version", "ID"})
+				table.SetHeader([]string{"Name", "URL", "ID"})
 
 				for _, v := range dataTable {
 					table.Append(v)
@@ -43,14 +46,17 @@ var searchCmd = &cobra.Command{
 				table.Render()
 			} else if args[0] == "by-id" {
 				getData, err := packages.GetId(args[1])
+
 				if err != nil {
 					fmt.Println("This id not was found in any package")
 					return
 				}
+
 				data := getData.Data
-				dataTable := [][]string{{"1", data.Author, data.Name, data.Url, data.Version, data.Id}}
+				dataTable := [][]string{{data.Name, data.Url, data.Id}}
 				table := tablewriter.NewWriter(os.Stdout)
-				table.SetHeader([]string{"Number", "Author", "Name", "URL", "Version", "ID"})
+				table.SetHeader([]string{"Name", "URL", "ID"})
+
 				for _, v := range dataTable {
 					table.Append(v)
 				}
