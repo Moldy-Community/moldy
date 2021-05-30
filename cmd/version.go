@@ -35,6 +35,7 @@ In error case:
 	Aliases: []string{"v", "ver"},
 	Example: "moldy version",
 }
+versionCmd.DisableAutoGenTag = true
 
 func init() {
 	rootCmd.AddCommand(versionCmd)
