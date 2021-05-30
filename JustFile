@@ -1,0 +1,23 @@
+
+alias pypi := pypi-commit-installer
+alias homebrew := homebrew-commit-installer
+alias c := commit
+
+default:
+  echo "Just commands"
+  just --list
+
+pypi-commit-installer:
+  echo "Installing commitizen ..."
+  pip install commitizen 
+  echo "Succesfully installed commitizen :D"
+
+homebrew-commit-installer:
+  echo "Installing commitizen by Homebrew ..."
+  brew install commitizen
+  echo "Succesfully installed commitizen :p"
+
+commit:
+  echo "Running commitizen..."
+  cz c
+  echo "Finished the commit :D"
