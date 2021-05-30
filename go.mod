@@ -1,4 +1,4 @@
-module github.com/Moldy-Community/CLI
+module github.com/Moldy-Community/moldy
 
 go 1.16
 
@@ -9,5 +9,5 @@ require (
 	github.com/matthewhartstonge/argon2 v0.1.4
 	github.com/spf13/cobra v1.1.3
 	github.com/spf13/viper v1.7.1
-	go.uber.org/zap v1.17.0
+	github.com/stretchr/testify v1.4.0 // indirect
 )

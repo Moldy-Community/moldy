@@ -16,7 +16,7 @@ limitations under the License.
 package cmd
 
 import (
-	"github.com/Moldy-Community/CLI/utils"
+	"github.com/Moldy-Community/moldy/utils/colors"
 	"github.com/spf13/cobra"
 )
 
@@ -30,7 +30,7 @@ In error case:
   If you have any error report on Github for fix that
   in the next version :D`,
 	Run: func(cmd *cobra.Command, args []string) {
-		utils.Info("Moldy 0.0.1 Alpha")
+		colors.Info("Moldy 0.0.1 Alpha")
 	},
 	Aliases: []string{"v", "ver"},
 	Example: "moldy version",

@@ -1,2 +1,9 @@
+# Files to ignore :p
+
 *.env
 *.toml
+
+# Editor config
+
+*.vscode/
+*.vim/

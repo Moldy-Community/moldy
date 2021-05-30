@@ -16,13 +16,17 @@ limitations under the License.
 package cmd
 
 import (
-	"github.com/Moldy-Community/CLI/functions"
+	"github.com/Moldy-Community/moldy/core/config"
+	files "github.com/Moldy-Community/moldy/core/files"
+	"github.com/Moldy-Community/moldy/core/terminal"
+	"github.com/Moldy-Community/moldy/utils/colors"
 	"github.com/spf13/cobra"
 )
 
 var (
-	patternToogle bool
-	basicToggle   bool
+	patternToogle  bool
+	basicToggle    bool
+	dotFilesToggle bool
 )
 
 // newCmd represents the new command
@@ -40,20 +44,69 @@ In error case:
 `,
 	Run: func(cmd *cobra.Command, args []string) {
 		if patternToogle {
-			name := functions.BasicPrompt("Name of the package", "Example package")
-			author := functions.BasicPrompt("Author name", "none")
-			version := functions.BasicPrompt("Version of the Package", "1.0")
-			description := functions.BasicPrompt("Description of the package", "Example package")
-			pattern := functions.SelectPrompt("Select the desing pattern", []string{"MVC", "DDD"})
+			name := terminal.BasicPrompt("Name of the package", "Example package")
+			author := terminal.BasicPrompt("Author name", "none")
+			version := terminal.BasicPrompt("Version of the Package", "1.0")
+			description := terminal.BasicPrompt("Description of the package", "Example package")
+			pattern := terminal.SelectPrompt("Select the desing pattern", []string{"MVC", "DDD"})
 			if pattern == "MVC" {
-				functions.GenerateMVCTemplate()
-				functions.ReadmeTmplGenerator(author, description, name, version)
-				functions.CreateConfigFile()
+				files.GenerateMVCTemplate()
+				files.MoldyCfgFile(author, description, name, version)
+				editApa := terminal.BasicPrompt("Edit the aparience preferences ?", "yes")
+				if editApa == "yes" {
+					files.AparienceChanges()
+				} else {
+					colors.Info("Aparience not selected bye bye")
+				}
+				editAdmin := terminal.BasicPrompt("Edit the adminitration project preferences ?", "yes")
+				if editAdmin == "yes" {
+					files.ProjectChanges()
+				} else {
+					colors.Info("Edit the Administration project not selected bye bye")
+				}
+				config.CreateConfigFile()
+
 			} else if pattern == "DDD" {
-				functions.GenerateDDDTemplate()
-				functions.ReadmeTmplGenerator(author, description, name, version)
-				functions.CreateConfigFile()
+				files.GenerateDDDTemplate()
+
+				files.MoldyCfgFile(author, description, name, version)
+				editApa := terminal.BasicPrompt("Edit the aparience preferences ?", "yes")
+				if editApa == "yes" {
+					files.AparienceChanges()
+				} else {
+					colors.Info("Aparience not selected bye bye")
+				}
+				editAdmin := terminal.BasicPrompt("Edit the administration project preferences ?", "yes")
+				if editAdmin == "yes" {
+					files.ProjectChanges()
+				} else {
+					colors.Info("Edit the Administration project not selected bye bye")
+				}
+				config.CreateConfigFile()
 			}
+		} else if basicToggle {
+			name := terminal.BasicPrompt("Name of the package", "Example package")
+			author := terminal.BasicPrompt("Author name", "none")
+
+			version := terminal.BasicPrompt("Version of the Package", "1.0")
+			description := terminal.BasicPrompt("Description of the package", "Example package")
+			files.GenerateBasicTemplate()
+			files.MoldyCfgFile(author, name, version, description)
+			editApa := terminal.BasicPrompt("Edit the aparience preferences ?", "yes")
+			if editApa == "yes" {
+				files.AparienceChanges()
+			} else {
+				colors.Info("Aparience not selected bye bye")
+			}
+			editAdmin := terminal.BasicPrompt("Edit the adminitration project preferences ?", "yes")
+			if editAdmin == "yes" {
+				files.ProjectChanges()
+			} else {
+				colors.Info("Edit the Administration project not selected bye bye")
+			}
+			config.CreateConfigFile()
+		} else if dotFilesToggle {
+			files.CreateDotFiles()
 		}
 	},
 	Aliases: []string{"n", "generate"},
@@ -64,4 +117,5 @@ func init() {
 	rootCmd.AddCommand(newCmd)
 	newCmd.Flags().BoolVarP(&patternToogle, "pattern", "p", false, "Generate a Moldy project with a desing pattern")
 	newCmd.Flags().BoolVarP(&basicToggle, "basic", "b", false, "Generate a Moldy project with a basic structure")
+	newCmd.Flags().BoolVarP(&dotFilesToggle, "dotfiles", "d", false, "Create a dot files for git, editor config etc")
 }
