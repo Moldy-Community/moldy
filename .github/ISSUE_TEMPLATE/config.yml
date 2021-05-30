@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Moldy Mail
+    url: mailto:moldycommunity@gmai.com
+    about: Please any support or offert to this email
+  - name: Moldy Bug or security vulnerabilities
+    url:  https://discord.gg/2uwzhmJdfw
+    about: Please report security vulnerabilities here.
