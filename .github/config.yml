@@ -1,0 +1,4 @@
+helpr:
+  opened: 'new-moldy-pr'
+  merged: 'success-moldy-pr'
+  rejected: 'error-moldy-pr'
