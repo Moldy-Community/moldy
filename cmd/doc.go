@@ -16,9 +16,9 @@ limitations under the License.
 package cmd
 
 import (
+	docGen "github.com/Moldy-Community/moldy/core/doc-generator"
 	"github.com/Moldy-Community/moldy/utils/functions"
 	"github.com/spf13/cobra"
-	"github.com/spf13/cobra/doc"
 )
 
 var (
@@ -39,8 +39,7 @@ This application is a tool to generate the needed files
 to quickly create a Cobra application.`,
 	Run: func(cmd *cobra.Command, args []string) {
 		if generateFlg {
-			err := doc.GenMarkdownTree(rootCmd, "./moldyDoc")
-			functions.CheckErrors(err, "Code 2", "Error in generate the documentation for moldy", "Report the error on github or re run with sudo")
+			docGen.GenDocTree(rootCmd)
 		} else if openFlg {
 			functions.OpenBrowser("https://moldybook.netlify.app/")
 		} else if contribFlg {

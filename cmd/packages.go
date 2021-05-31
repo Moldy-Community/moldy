@@ -16,8 +16,8 @@ limitations under the License.
 package cmd
 
 import (
+	"github.com/Moldy-Community/moldy/core/packages"
 	"github.com/Moldy-Community/moldy/utils/colors"
-	"github.com/Moldy-Community/moldy/utils/functions/packages"
 	"github.com/spf13/cobra"
 )
 
