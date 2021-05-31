@@ -23,15 +23,17 @@ THE SOFTWARE.
 package functions
 
 import (
+	"fmt"
 	"log"
 
 	"github.com/Moldy-Community/moldy/utils/colors"
 )
 
 func CheckErrors(err error, code, msg, solution string) {
-
 	if err != nil {
 		colors.Error("NEW ERROR DETECTED \n")
+		colors.Info("COMPLETE ERROR BELLOW \n")
+		fmt.Println(err)
 		log.Fatalf(`
     MSG: %v
     CODE: %v
