@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/Moldy-Community/moldy/utils/functions/packages"
+	"github.com/Moldy-Community/moldy/core/packages"
 	"github.com/olekukonko/tablewriter"
 	"github.com/spf13/cobra"
 )

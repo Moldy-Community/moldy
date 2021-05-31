@@ -36,7 +36,7 @@ func GetId(id string) (getOne, error) {
 	}
 
 	if dataStruct.Error {
-		return dataStruct, errors.New("Not data found")
+		return dataStruct, errors.New("not data found")
 	}
 
 	return dataStruct, nil

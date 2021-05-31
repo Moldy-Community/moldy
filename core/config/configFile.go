@@ -10,7 +10,7 @@ import (
 /* Add the default values, paths, aliases and config name and type */
 var (
 	defaults = map[string]interface{}{
-		"moldyPackages": map[string]string{
+		"moldyPackageInfo": map[string]string{
 			"name":        "none",
 			"version":     "none",
 			"author":      "Example Author",
