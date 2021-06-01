@@ -1,8 +1,7 @@
 package cmd
 
 import (
-	_"github.com/Moldy-Community/moldy/core/config"
-	_"github.com/Moldy-Community/moldy/utils/function/packages"
+	//_"github.com/Moldy-Community/moldy/core/config"
 	"github.com/spf13/cobra"
 )
 
