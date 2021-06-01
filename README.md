@@ -35,31 +35,24 @@ For any other transtation make a pull request the spanish history is the origina
 6. Clone the repository using git
 
 ```
-
 git clone https://github.com/YOUR_USER/moldy.git
-
-```   
-7. Install the dependencies with:
-   
 ```
+7. Install the dependencies with:
 
-just dependencies 
-   
+```
+just dependencies
 ```
 8. Run the CLI with:
 
 ```
-  
 just r -h
-
 ```
 9. Make a new branch:
 
- ```
+```
+just b new-feat
+```
 
- just b new-feat
-
- ```
 10. Commit your changes with the guide [CONVENTIONAL COMMITS](https://www.conventionalcommits.org/en/v1.0.0/) installing the manager called commitizen run this commands:
 
 ```
@@ -75,8 +68,7 @@ just homebrew
 
 just c
 
-# SELECT THE OPTIONS AND SUCCESFULY COMMIT CREATED
-
+# SELECT THE OPTIONS AND SUCCESFULY COMMIT CREATEDS
 ```
 
 11. Make a pull request describing the new feature and if pass the tests we accept your pull request or if not pass, will explain why.
