@@ -10,3 +10,4 @@
 
 # Dependency directories (remove comment below to include it)
 vendor/
+*.zip
