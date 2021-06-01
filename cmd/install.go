@@ -1,8 +1,6 @@
 package cmd
 
 import (
-	_"github.com/Moldy-Community/moldy/core/config"
-	_"github.com/Moldy-Community/moldy/utils/function/packages"
 	"github.com/spf13/cobra"
 )
 
@@ -10,7 +8,7 @@ import (
 var createInstall bool
 
 // configCmd represents the config command
-var configCmd = &cobra.Command{
+var installCmd = &cobra.Command{
 	Use:   "install",
 	Short: "Search packages",
 	Long: `:
@@ -30,7 +28,7 @@ var configCmd = &cobra.Command{
 }
 
 func init() {
-	rootCmd.AddCommand(configCmd)
-	configCmd.Flags().BoolP(&createInstall, "url", false, "a command for download package")
+	rootCmd.AddCommand(installCmd)
+	installCmd.Flags().BooVarP(&createInstall, "url", false, "a command for download package")
 }
 
