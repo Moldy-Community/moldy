@@ -33,6 +33,6 @@ var installCmd = &cobra.Command{
 
 func init() {
 	rootCmd.AddCommand(installCmd)
-	installCmd.Flags().BoolVarP(&createInstall, "url", false, "a command for download package")
+	installCmd.Flags().BoolVarP(&createInstall, "url", "u",false, "a command for download package")
 }
 
