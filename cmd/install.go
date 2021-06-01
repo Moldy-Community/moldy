@@ -2,7 +2,7 @@ package cmd
 
 import (
 	_"github.com/Moldy-Community/moldy/core/config"
-	"github.com/Moldy-Community/moldy/utils/function/packages"
+	_"github.com/Moldy-Community/moldy/utils/function/packages"
 	"github.com/spf13/cobra"
 )
 
@@ -18,7 +18,7 @@ var configCmd = &cobra.Command{
        `,
 	Run: func(cmd *cobra.Command, args []string) {
 		if createInstall {
-			if flags,_:= cmd.Flags().GetBool("url"), flags{
+			if flags,_:= cmd.Flags().GetBool("url");flags{
 				//do something
 			}else{
 				  //packages.GetId().go
