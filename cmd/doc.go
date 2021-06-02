@@ -30,13 +30,17 @@ var (
 // docCmd represents the docu command
 var docCmd = &cobra.Command{
 	Use:   "doc",
-	Short: "A brief description of your command",
-	Long: `A longer description that spans multiple lines and likely contains examples
-and usage of using your command. For example:
+	Short: "Generate a documentation and open the doc tools",
+	Long: `Yey! Moldy Doc generator is here:
 
-Cobra is a CLI library for Go that empowers applications.
-This application is a tool to generate the needed files
-to quickly create a Cobra application.`,
+If you run --generate this create a folder called moldyDoc here is the documentation for
+alll commands of moldy.
+
+If you run --open this open the moldy documentation online.
+
+If you run --contribute open the moldy org on github`,
+	Aliases: []string{"docu", "dc", "d"},
+	Example: "moldy doc --generate or moldy dc --open",
 	Run: func(cmd *cobra.Command, args []string) {
 		if generateFlg {
 			docGen.GenDocTree(rootCmd)
