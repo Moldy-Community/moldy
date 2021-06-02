@@ -27,7 +27,11 @@ var (
 		"aparienceOptions": map[string]bool{
 			"progressBar": true,
 			"asciiArt":    true,
-			"colorsMode":  true},
+			"colorsMode":  true,
+		},
+		"moldyRunner": map[string]string{
+			"test": "echo 'Running a example command'",
+		},
 	}
 	paths = []string{
 		"./",
