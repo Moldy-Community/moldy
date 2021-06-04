@@ -41,6 +41,7 @@ homebrew-commit-installer:
   echo "Succesfully installed commitizen :p"
 
 commit:
+  go fmt ./...
   echo "Adding to staging area"
   git add .
   echo "Running commitizen..."
