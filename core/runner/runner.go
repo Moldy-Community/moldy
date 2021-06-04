@@ -12,7 +12,7 @@ import (
 	toml "github.com/pelletier/go-toml"
 )
 
-func shellRunner(command, shell, runner string) (error, string, string) {
+func ShellRunner(command, shell, runner string) (error, string, string) {
 	var stdout bytes.Buffer
 	var stderr bytes.Buffer
 	cmd := exec.Command(shell, runner, command)
@@ -39,14 +39,14 @@ func RunnerWorker(name string) {
 
 				platform := runtime.GOOS
 				if platform == "linux" || platform == "darwin" {
-					err, stout, sterr := shellRunner("bash", "-c", val)
+					err, stout, sterr := ShellRunner("bash", "-c", val)
 					functions.CheckErrors(err, "Code 2", "Error in run the command", "Check the permissions or report the error on github")
 					colors.Info("StdOut of the command: ")
 					fmt.Println(stout)
 					colors.Info("Sterr of the command:")
 					fmt.Println(sterr)
 				} else if platform == "windows " {
-					err, stout, sterr := shellRunner("cmd", "/k", val)
+					err, stout, sterr := ShellRunner("cmd", "/k", val)
 					functions.CheckErrors(err, "Code 2", "Error in run the command", "Check the permissions or report the error on github")
 					colors.Info("StdOut of the command: ")
 					fmt.Println(stout)
