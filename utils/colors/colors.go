@@ -1,33 +1,34 @@
 package colors
 
 import (
+	"fmt"
 	"os"
 
 	moldyConfig "github.com/Moldy-Community/moldy/core/files/configMoldy"
-	colors "github.com/fatih/color"
+	colors "github.com/gookit/color"
 )
 
-func Warn(msg string) {
-	colors.NoColor = !moldyConfig.Settings().AparienceOptions.ColorsMode
-	yellow := colors.New(colors.FgYellow).Add(colors.Bold).Set().PrintlnFunc()
-	yellow(msg)
+func Warn(msg ...string) {
+	colors.Enable = !moldyConfig.Settings().AparienceOptions.ColorsMode
+	colors.Yellow.Print("WARN:\n")
+	fmt.Printf(" %v", msg)
 }
 
-func Error(msg string) {
-	colors.NoColor = !moldyConfig.Settings().AparienceOptions.ColorsMode
-	red := colors.New(colors.BgHiRed).Add(colors.Bold).Set().PrintlnFunc()
-	red(msg)
+func Error(msg ...string) {
+	colors.Enable = !moldyConfig.Settings().AparienceOptions.ColorsMode
+	colors.Red.Print("ERROR:\n")
+	fmt.Printf(" %v", msg)
 	os.Exit(1)
 }
 
-func Info(msg string) {
-	colors.NoColor = !moldyConfig.Settings().AparienceOptions.ColorsMode
-	blue := colors.New(colors.FgBlue).Add(colors.Underline).Set().PrintlnFunc()
-	blue(msg)
+func Info(msg ...string) {
+	colors.Enable = !moldyConfig.Settings().AparienceOptions.ColorsMode
+	colors.Cyan.Print("INFO:\n")
+	fmt.Printf(" %v", msg)
 }
 
-func Success(msg string) {
-	colors.NoColor = !moldyConfig.Settings().AparienceOptions.ColorsMode
-	green := colors.New(colors.FgGreen).Set().PrintlnFunc()
-	green(msg)
+func Success(msg ...string) {
+	colors.Enable = !moldyConfig.Settings().AparienceOptions.ColorsMode
+	colors.Green.Print("SUCCESS:\n")
+	fmt.Printf(" %v", msg)
 }
