@@ -11,7 +11,7 @@ require (
 	github.com/matthewhartstonge/argon2 v0.1.4
 	github.com/mattn/go-colorable v0.1.8 // indirect
 	github.com/olekukonko/tablewriter v0.0.5
-	github.com/pelletier/go-toml v1.9.1
+	github.com/pelletier/go-toml v1.9.2
 	github.com/spf13/cobra v1.1.3
 	github.com/spf13/viper v1.7.1
 )
