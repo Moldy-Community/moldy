@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"os"
 
+	moldyConfig "github.com/Moldy-Community/moldy/core/files/configMoldy"
 	"github.com/Moldy-Community/moldy/core/packages"
 	"github.com/olekukonko/tablewriter"
 	"github.com/spf13/cobra"
@@ -30,20 +31,28 @@ var searchCmd = &cobra.Command{
 				}
 
 				data := getData.Data
-				var dataTable [][]string
 
-				for _, value := range data {
-					dataTable = append(dataTable, []string{value.Name, value.Url, value.Id})
+				if moldyConfig.Settings().AparienceOptions.AsciiArt {
+
+					var dataTable [][]string
+
+					for _, value := range data {
+						dataTable = append(dataTable, []string{value.Name, value.Url, value.Id})
+					}
+
+					table := tablewriter.NewWriter(os.Stdout)
+					table.SetHeader([]string{"Name", "URL", "ID"})
+
+					for _, v := range dataTable {
+						table.Append(v)
+					}
+
+					table.Render()
+				} else {
+					for i, value := range data {
+						fmt.Printf("\n%v.\nName: %v\nURL:%v\nID:%v\n", i+1, value.Name, value.Url, value.Id)
+					}
 				}
-
-				table := tablewriter.NewWriter(os.Stdout)
-				table.SetHeader([]string{"Name", "URL", "ID"})
-
-				for _, v := range dataTable {
-					table.Append(v)
-				}
-
-				table.Render()
 			} else if args[0] == "by-id" {
 				getData, err := packages.GetId(args[1])
 
