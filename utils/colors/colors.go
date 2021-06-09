@@ -1,7 +1,6 @@
 package colors
 
 import (
-	"fmt"
 	"os"
 
 	moldyConfig "github.com/Moldy-Community/moldy/core/files/configMoldy"

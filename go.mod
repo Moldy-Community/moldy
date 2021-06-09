@@ -3,9 +3,9 @@ module github.com/Moldy-Community/moldy
 go 1.16
 
 require (
+	github.com/fatih/color v1.7.0
 	github.com/go-git/go-git/v5 v5.4.2
 	github.com/go-resty/resty/v2 v2.6.0
-	github.com/gookit/color v1.4.2
 	github.com/joho/godotenv v1.3.0
 	github.com/manifoldco/promptui v0.8.0
 	github.com/matthewhartstonge/argon2 v0.1.4
