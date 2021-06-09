@@ -38,7 +38,7 @@ func CheckErrors(err error, code, msg, solution string) {
 		//Start the time
 		dt := time.Now()
 		//Write out the error detect
-		colors.Error("NEW ERROR DETECTED \n")
+		colors.Warn("NEW ERROR DETECTED \n")
 
 		//Parse as interface
 		dataLog := map[string]interface{}{
