@@ -84,6 +84,10 @@ just c
 
 11. Make a pull request describing the new feature and if pass the tests we accept your pull request or if not pass, will explain why.
 
+## 🤓 Contribution guides
+
+Check our contribution guides for aprove the pull request [here](./CONTRIBUTION_GUIDES.md)
+
 ## ✔️ Authors
 
 All authors of moldy are detailed in the book **[here](https://moldybook.netlify.app/docs)**
@@ -96,6 +100,14 @@ Moldy is on the following social networks
 2. [Discord](https://discord.gg/2uwzhmJdfw)
 3. [Github](https://github.com/Moldy-Community)
 
+
+## ©️ Copyright
+
+**LICENSE**: Apache 2.0
+
+Check the file [here](./LICENSE)
+
+Any question to: **moldycommunity@gmail.com**
 
 ---
 
