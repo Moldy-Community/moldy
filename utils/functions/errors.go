@@ -23,22 +23,56 @@ THE SOFTWARE.
 package functions
 
 import (
+	"encoding/json"
 	"fmt"
+	"io/ioutil"
 	"log"
+	"os"
+	"time"
 
 	"github.com/Moldy-Community/moldy/utils/colors"
 )
 
 func CheckErrors(err error, code, msg, solution string) {
 	if err != nil {
+		//Start the time
+		dt := time.Now()
+		//Write out the error detect
 		colors.Error("NEW ERROR DETECTED \n")
-		colors.Info("COMPLETE ERROR BELLOW \n")
-		fmt.Println(err)
-		log.Fatalf(`
-    MSG: %v
-    CODE: %v
-    SOLUTION: %v
-    ERROR COMPLETE: %v
-    `, msg, code, solution, err)
+
+		//Parse as interface
+		dataLog := map[string]interface{}{
+			"Message":                  msg,
+			"Code Error":               code,
+			"Solution of error":        solution,
+			"Time of the error create": dt.Format("01-02-2006 15:04:05 Monday"),
+			"Error Complete":           err,
+		}
+		//Print with for loop
+		for k, v := range dataLog {
+			fmt.Println(k, v)
+		}
+		//Parse as json
+		jsonParsed, err := json.Marshal(dataLog)
+		if err != nil {
+			log.Fatalf("Error in parse the map to json error: %s", err)
+		}
+		fmt.Print(jsonParsed)
+		//Create the temp file
+		tmpFile, err := ioutil.TempFile(os.TempDir(), "moldy-log-")
+		if err != nil {
+			log.Fatalf("Error in create the temp file :C %s", err)
+		}
+		defer os.Remove(tmpFile.Name())
+		//Write with the content
+		if _, err = tmpFile.Write(jsonParsed); err != nil {
+			log.Fatal("Failed to write to temporary file", err)
+		}
+
+		// Close the file
+		if err := tmpFile.Close(); err != nil {
+			log.Fatal(err)
+		}
+		os.Exit(1)
 	}
 }
