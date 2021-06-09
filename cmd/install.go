@@ -1,12 +1,19 @@
 package cmd
 
 import (
+	"fmt"
+
 	gitF "github.com/Moldy-Community/moldy/core/git"
+	"github.com/Moldy-Community/moldy/core/packages"
 	"github.com/Moldy-Community/moldy/utils/colors"
+	"github.com/Moldy-Community/moldy/utils/functions"
 	"github.com/spf13/cobra"
 )
 
-var createInstall string
+var (
+	createInstall string
+	nameInstall   bool
+)
 
 // configCmd represents the config command
 var installCmd = &cobra.Command{
@@ -19,6 +26,18 @@ var installCmd = &cobra.Command{
 		if createInstall != "" {
 			urlClone := "https://" + createInstall + ".git"
 			gitF.CloneRepos(urlClone)
+		} else if nameInstall {
+			data, err := packages.GetSearch(args[0])
+			functions.CheckErrors(err, "Code 2", "Error in get the api package", "Check if package exists or report the bug on github")
+			info := data.Data
+			for index, val := range info {
+				if index == 0 {
+					colors.Info("Cloning the repo: ")
+					fmt.Print(val.Name)
+					gitF.CloneRepos(val.Url)
+					break
+				}
+			}
 		} else {
 			colors.Error("Error in the create install flag")
 		}
@@ -30,4 +49,5 @@ var installCmd = &cobra.Command{
 func init() {
 	rootCmd.AddCommand(installCmd)
 	installCmd.Flags().StringVarP(&createInstall, "url", "u", "github.com/Moldy-Community/moldy", "Clone the repository from a url")
+	installCmd.Flags().BoolVarP(&nameInstall, "pkg", "p", false, "Insert the name and search in the moldy api the package")
 }
