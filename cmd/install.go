@@ -4,6 +4,7 @@ import (
 	"fmt"
 
 	gitF "github.com/Moldy-Community/moldy/core/git"
+	"github.com/Moldy-Community/moldy/core/locks"
 	"github.com/Moldy-Community/moldy/core/packages"
 	"github.com/Moldy-Community/moldy/utils/colors"
 	"github.com/Moldy-Community/moldy/utils/functions"
@@ -26,6 +27,7 @@ var installCmd = &cobra.Command{
 		if createInstall != "" {
 			urlClone := "https://" + createInstall + ".git"
 			gitF.CloneRepos(urlClone)
+			locks.WriteLockUrl(urlClone)
 		} else if nameInstall {
 			data, err := packages.GetSearch(args[0])
 			functions.CheckErrors(err, "Code 2", "Error in get the api package", "Check if package exists or report the bug on github")
@@ -35,6 +37,7 @@ var installCmd = &cobra.Command{
 					colors.Info("Cloning the repo: ")
 					fmt.Print(val.Name)
 					gitF.CloneRepos(val.Url)
+					locks.WriteLock(val.Name)
 					break
 				}
 			}
