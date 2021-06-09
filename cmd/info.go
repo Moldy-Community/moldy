@@ -18,6 +18,7 @@ package cmd
 import (
 	"fmt"
 
+	moldyConfig "github.com/Moldy-Community/moldy/core/files/configMoldy"
 	"github.com/spf13/cobra"
 )
 
@@ -44,7 +45,8 @@ func init() {
 }
 
 func showInfo() {
-	var asciiMoldy string = `
+	if moldyConfig.Settings().AparienceOptions.AsciiArt {
+		var asciiMoldy string = `
 
 ███╗   ███╗ ██████╗ ██╗     ██████╗ ██╗   ██╗
 ████╗ ████║██╔═══██╗██║     ██╔══██╗╚██╗ ██╔╝
@@ -55,7 +57,7 @@ func showInfo() {
 
 	`
 
-	fmt.Printf(asciiMoldy + `
+		fmt.Printf(asciiMoldy + `
 The best tool for initial his project :
 
 Moldy is a Project Starter and Project Administrator
@@ -71,4 +73,22 @@ Web Page: www.moldy-community.github.io/web
 
 Made with love in Latin America.
 	`)
+	} else {
+		fmt.Printf(`
+The best tool for initial his project :
+
+Moldy is a Project Starter and Project Administrator
+writed in golang that help for start his project and is
+100 OPEN SOURCE.
+
+Author: Moldy Community
+Contact mail: moldycommunity@gmail.com
+Repository: www.github.com/Moldy-Community/moldy
+Web Page: www.moldy-community.github.io/web
+
+-----------------------------------------------------
+
+Made with love in Latin America.
+	`)
+	}
 }
