@@ -2,7 +2,7 @@
   <p>
     <img width="100" src="./assets/icon.png">
   </p>
-  <h1>Moldy The best project starter of the world</h1>
+  <h1>Moldy the fastest, safest, most modern way to start and manage your projects.</h1>
 </div>
 
 <div align="center">
