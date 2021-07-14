@@ -38,6 +38,40 @@ The Moldy history and philosophy is here:
 
 For any other transtation make a pull request the spanish history is the original
 
+## 📦 Installation
+
+> From the binaries
+
+- Go to the releases page [here](https://github.com/Moldy-Community/moldy/releases)
+- Download the binary respective for your platform
+- Add the binary to the path
+- Check if is installed
+````
+moldy -h
+````
+
+> From source
+
+- Install [golang](https://golang.org/dl)
+- Clone the repository (Stable way)
+```
+git clone -b main https://github.com/moldy-community/moldy.git
+```
+- Unstable way
+````
+git clone -b night https://github.com/moldy-community/moldy.git
+````
+- Install the binary
+````
+cd path/to/moldy/cloned
+go install
+````
+- Check if is installed
+````
+moldy -h
+````
+
+
 ## 🧐 Contribute
 
 1. Install Golang
@@ -82,9 +116,8 @@ just b new-feat
 just pypi
 
 # OR MACOS USERS
-
-# INSTALL HOMEBREW FOR THIS COMMAND
-just homebrew
+  # INSTALL HOMEBREW FOR THIS COMMAND
+  just homebrew
 
 # AFTER THAT RUN
 just c
@@ -92,7 +125,13 @@ just c
 # SELECT THE OPTIONS AND SUCCESFULY COMMIT CREATEDS
 ```
 
-12. Make a pull request describing the new feature and if pass the tests we accept your pull request or if not pass, will explain why.
+12. Upload the changes from the branch to your fork
+
+```
+just pb new-feat
+```
+
+13. Make a pull request describing the new feature and if pass the tests we accept your pull request or if not pass, will explain why.
 
 ## 🤓 Contribution guides
 

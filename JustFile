@@ -1,4 +1,3 @@
-
 alias pypi := pypi-commit-installer
 alias homebrew := homebrew-commit-installer
 alias c := commit
@@ -6,6 +5,9 @@ alias r := run
 alias dep := dependencies
 alias i := install
 alias b := branch
+alias p := push
+alias pb := push-branch
+alias pl := pull
 
 default:
   echo "Just commands"
@@ -13,7 +15,8 @@ default:
 
 branch NAME:
   echo "Running the git branch new"
-  git branch -M {{NAME}}
+  git checkout -b '{{NAME}}'
+  echo "Creation and change of branch successful"
 
 run COMMAND:
   echo "Running moldy .."
@@ -48,8 +51,22 @@ commit:
   cz c
   echo "Finished the commit :D"
 
-
 push:
   echo "Pushing to main ..."
   git push -u origin main
   echo "Finished the push"
+
+push-branch NAME:
+  echo "Pushing to {{NAME}} ..."
+  git push origin {{NAME}}
+  echo "Finished the push"
+
+add-stream:
+  echo "Adding Moldy upstream"
+  git remote add upstream git@github.com:Moldy-Community/moldy.git
+  echo "Successful addition"
+
+pull:
+  echo "Pulling from Moldy main"
+  git pull upstream main
+  echo "successful update"
