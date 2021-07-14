@@ -1,6 +1,6 @@
 <div align="center">
   <p>
-    <img width="100" src="./assets/icon.png">
+    <img width="200" src="./assets/icon.png">
   </p>
   <h1>Moldy the fastest, safest, most modern way to start and manage your projects.</h1>
 </div>
@@ -12,6 +12,7 @@
 ![DiscordBadge](https://img.shields.io/discord/842085043777831012?logo=discord&logoColor=white)
 ![Moldy STARS](https://img.shields.io/github/stars/Moldy-Community/moldy?style=social)
 ![Moldy License](https://img.shields.io/github/license/moldy-community/moldy)
+
 </div>
 
 ## 🤔 What is Moldy ?
@@ -38,6 +39,7 @@ The Moldy history and philosophy is here:
 For any other transtation make a pull request the spanish history is the original
 
 ## 🧐 Contribute
+
 1. Install Golang
 2. Install Git
 3. Install just [here](https://github.com/casey/just)
@@ -48,41 +50,49 @@ For any other transtation make a pull request the spanish history is the origina
 ```
 git clone https://github.com/YOUR_USER/moldy.git
 ```
-7. Install the dependencies with:
+
+7. Enter the moldy folder
+
+```
+cd moldy
+```
+
+8. Install the dependencies with:
 
 ```
 just dependencies
 ```
-8. Run the CLI with:
+
+9. Run the CLI with:
 
 ```
 just r -h
 ```
-9. Make a new branch:
+
+10. Make a new branch:
 
 ```
 just b new-feat
 ```
 
-10. Commit your changes with the guide [CONVENTIONAL COMMITS](https://www.conventionalcommits.org/en/v1.0.0/) installing the manager called commitizen run this commands:
+11. Commit your changes with the guide [CONVENTIONAL COMMITS](https://www.conventionalcommits.org/en/v1.0.0/) installing the manager called commitizen run this commands:
 
 ```
 # INSTALL PYTHON FOR THIS COMMAND
-
 just pypi
 
-# INSTALL HOMEBREW FOR THIS COMMAND
+# OR MACOS USERS
 
+# INSTALL HOMEBREW FOR THIS COMMAND
 just homebrew
 
 # AFTER THAT RUN
-
 just c
 
 # SELECT THE OPTIONS AND SUCCESFULY COMMIT CREATEDS
 ```
 
-11. Make a pull request describing the new feature and if pass the tests we accept your pull request or if not pass, will explain why.
+12. Make a pull request describing the new feature and if pass the tests we accept your pull request or if not pass, will explain why.
 
 ## 🤓 Contribution guides
 
@@ -92,14 +102,13 @@ Check our contribution guides for aprove the pull request [here](./CONTRIBUTION_
 
 All authors of moldy are detailed in the book **[here](https://moldybook.netlify.app/docs)**
 
-## 📱  Social media
+## 📱 Social media
 
 Moldy is on the following social networks
 
 1. [Twitter](https://twitter.com/CommunityMoldy)
 2. [Discord](https://discord.gg/2uwzhmJdfw)
 3. [Github](https://github.com/Moldy-Community)
-
 
 ## ©️ Copyright
 
