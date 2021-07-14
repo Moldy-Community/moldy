@@ -82,9 +82,8 @@ just b new-feat
 just pypi
 
 # OR MACOS USERS
-
-# INSTALL HOMEBREW FOR THIS COMMAND
-just homebrew
+  # INSTALL HOMEBREW FOR THIS COMMAND
+  just homebrew
 
 # AFTER THAT RUN
 just c
@@ -92,7 +91,13 @@ just c
 # SELECT THE OPTIONS AND SUCCESFULY COMMIT CREATEDS
 ```
 
-12. Make a pull request describing the new feature and if pass the tests we accept your pull request or if not pass, will explain why.
+12. Upload the changes from the branch to your fork
+
+```
+just pb new-feat
+```
+
+13. Make a pull request describing the new feature and if pass the tests we accept your pull request or if not pass, will explain why.
 
 ## 🤓 Contribution guides
 
