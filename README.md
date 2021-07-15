@@ -40,6 +40,13 @@ For any other transtation make a pull request the spanish history is the origina
 
 ## 📦 Installation
 
+> Windows Powershell script
+```ps1
+Invoke-WebRequest https://git.io/JWJym -OutFile moldyInstaller.ps1
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+./moldyInstalller.ps1
+```
+
 > From the binaries
 
 - Go to the releases page [here](https://github.com/Moldy-Community/moldy/releases)
