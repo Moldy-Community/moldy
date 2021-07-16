@@ -23,7 +23,7 @@ var statusCmd = &cobra.Command{
 
 			path, err := os.Getwd()
 
-            if err != {
+            if err != nil {
                 log.Println(err)
                 return
             }
