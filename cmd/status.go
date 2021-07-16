@@ -48,7 +48,8 @@ var statusCmd = &cobra.Command{
 				Timeout: 10 * time.Second,
 			}
 			start := time.Now()
-			resp, err := client.Get("https://golangcode.com/http-get-with-timeout/")
+            //here here the url of the api will be entered
+			resp, err := client.Get("https://...")
 
 			if err != nil {
 				log.Fatal(err)
@@ -71,7 +72,7 @@ var statusCmd = &cobra.Command{
 func init() {
 
 	rootCmd.AddCommand(statusCmd)
-	statusCmd.Flags().StringVarP(&cli, "cli", "c", " ", "view status CLI")
-	statusCmd.Flags().StringVarP(&api, "api", "a", " ", "view staus API")
+	statusCmd.Flags().StringVarP(&cli, "cli", "c", " ", "View status CLI")
+	statusCmd.Flags().StringVarP(&api, "api", "a", " ", "View status API")
 
 }
