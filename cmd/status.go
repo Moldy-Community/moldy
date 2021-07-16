@@ -17,16 +17,20 @@ var (
 var statusCmd = &cobra.Command{
 	Use:     "status",
 	Short:   "show status of Moldy",
-	Long:    "show  the status of CLI and API",
-	Aliases: []string{"s", "st"},
+	Long:    "show  the status of CLI and API allows you to see the response time of the api",
 	Run: func(cmd *cobra.Command, args []string) {
 		if cli == "view" {
 
-			path, _ := os.Getwd()
+			path, err := os.Getwd()
 
+            if err != {
+                log.Println(err)
+                return
+            }
+            
 			if _, err := os.Stat(path + "/MoldyFile.toml"); os.IsNotExist(err) {
 
-				fmt.Println("No MoldyFile exit pleace make a configfile")
+				fmt.Println("No MoldyFile found, please make a configfile")
 
 				return
 			} else {
@@ -38,7 +42,7 @@ var statusCmd = &cobra.Command{
 					log.Fatal(err)
 				}
 
-				fmt.Fprintf(os.Stdout, "----- Status -----")
+				fmt.Println("----- Status -----")
 				fmt.Printf("\t %s ", string(rf))
 			}
 
@@ -47,7 +51,8 @@ var statusCmd = &cobra.Command{
 			client := http.Client{
 				Timeout: 10 * time.Second,
 			}
-			start := time.Now()
+			
+            start := time.Now()
             //here here the url of the api will be entered
 			resp, err := client.Get("https://...")
 
@@ -66,7 +71,8 @@ var statusCmd = &cobra.Command{
 			}
 		}
 
-	},
+	},Example: "moldy status --cli view or status --api view",
+    Aliases: []string{"s", "st"},
 }
 
 func init() {
