@@ -53,7 +53,7 @@ var statusCmd = &cobra.Command{
 			}
 			
             start := time.Now()
-            //here here the url of the api will be entered
+            //coming soon feature...
 			resp, err := client.Get("https://...")
 
 			if err != nil {
