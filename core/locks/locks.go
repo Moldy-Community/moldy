@@ -10,7 +10,7 @@ import (
 
 func GetContents(pkgname string) map[string]interface{} {
 	data, err := packages.GetSearch(pkgname)
-	functions.CheckErrors(err, "Code 2", "Error in lock the package ", "Check if the package exisist or report the error on github")
+	functions.CheckErrors(err, "Code 2", "Error in lock the package ", "Check if the package exist or report the error on github")
 
 	for i, val := range data.Data {
 		if i == 0 {
@@ -21,8 +21,9 @@ func GetContents(pkgname string) map[string]interface{} {
 				"url":     val.Url,
 			}
 			return Info
-		}
-        break
+        } else{
+            break
+        }
 	}
 	return map[string]interface{}{}
 }
