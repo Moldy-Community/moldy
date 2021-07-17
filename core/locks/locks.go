@@ -21,8 +21,8 @@ func GetContents(pkgname string) map[string]interface{} {
 				"url":     val.Url,
 			}
 			return Info
-			break
 		}
+        break
 	}
 	return map[string]interface{}{}
 }
