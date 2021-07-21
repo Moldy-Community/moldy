@@ -35,13 +35,12 @@ func SelectPrompt(Label string, Items []string) string {
 	functions.CheckErrors(err, "Code 3", "Error in the input of the user", "Re run the command for fix the input with a valid option")
 	return result
 }
-func YesNoQuestion(Label string) string {
+func YesNoQuestion(Label string) bool {
 	pmp := promptui.Prompt{
 		Label:     Label,
 		IsConfirm: true,
 	}
-	result, err := pmp.Run()
+	result, _ := pmp.Run()
 
-	functions.CheckErrors(err, "Code 3", "Error in the yes no question", "Re run the command for fix the input with a valid option")
-	return result
+	return result == "y" || result == "Y"
 }
