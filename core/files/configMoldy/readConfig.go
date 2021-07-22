@@ -20,22 +20,12 @@ type AparienceOptions struct {
 	ProgressBar bool
 }
 
-type MoldyPackageInfo struct {
-	Author      string
-	Description string
-	Name        string
-	Url         string
-	Version     string
-}
-
 type MoldyRunner struct {
 	Test string
 }
-
 type ConfigStruct struct {
 	AdminProjects    AdminProjects
 	AparienceOptions AparienceOptions
-	MoldyPackageInfo MoldyPackageInfo
 	MoldyRunner      MoldyRunner
 }
 
