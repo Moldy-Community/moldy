@@ -52,7 +52,7 @@ var projCmd = &cobra.Command{
 			lastDir := strings.Split(strings.Replace(dir, homeDir, "", 1), "/")
 			lastDir[1] = ""
 			lastDirStr := strings.Replace(strings.Join(lastDir, "/"), "/", "", 1)
-			file, err := os.Create(points + lastDirStr + "/test.toml")
+			file, err := os.Create(points + lastDirStr + "/Moldy.pkg.toml")
 
 			functions.CheckErrors(err, "1", "Something bad happened with the path", "Unknown exact solution. Leave please the issue in github.com/Moldy-Community/moldy")
 
