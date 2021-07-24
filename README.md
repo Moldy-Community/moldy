@@ -84,7 +84,7 @@ moldy -h
 1. Install Golang
 2. Install Git
 3. Install just [here](https://github.com/casey/just)
-4. Give me a star ⭐
+4. Give us a star ⭐
 5. Make a Fork
 6. Clone the repository using git
 
@@ -153,7 +153,7 @@ All authors of moldy are detailed in the book **[here](https://moldybook.netlify
 Moldy is on the following social networks
 
 1. [Twitter](https://twitter.com/CommunityMoldy)
-2. [Discord](https://discord.gg/2uwzhmJdfw)
+2. [Discord](https://discord.gg/BS6TEHuXQe)
 3. [Github](https://github.com/Moldy-Community)
 
 ## ©️ Copyright
