@@ -34,12 +34,13 @@ var projCmd = &cobra.Command{
 			}
 
 			dir, _ := os.Getwd()
+			execDir, _ := os.Executable()
 			homeDir, _ := os.UserHomeDir()
 			points := ""
-			dirArr := strings.Split(strings.Replace(dir, "/", "", 1), "/")
+			execDirArr := strings.Split(strings.Replace(execDir, "/", "", 1), "/")
 			homeDirArr := strings.Split(strings.Replace(homeDir, "/", "", 1), "/")
 
-			difference := len(dirArr) - len(homeDirArr)
+			difference := len(execDirArr) - len(homeDirArr)
 
 			for i := 1; i <= difference*2; i++ {
 				if i%3 == 0 {
@@ -49,8 +50,17 @@ var projCmd = &cobra.Command{
 				}
 			}
 
+			pointsNeedAdd := len(strings.Split(points, "/")) * 2
+
+			for i := 0; i <= pointsNeedAdd; i++ {
+				if i%3 == 0 {
+					points += "/"
+				} else {
+					points += "."
+				}
+			}
+
 			lastDir := strings.Split(strings.Replace(dir, homeDir, "", 1), "/")
-			lastDir[1] = ""
 			lastDirStr := strings.Replace(strings.Join(lastDir, "/"), "/", "", 1)
 			file, err := os.Create(points + lastDirStr + "/Moldy.pkg.toml")
 
