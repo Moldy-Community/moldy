@@ -12,3 +12,6 @@
 vendor/
 *.zip
 dist/
+
+# Moldy dev build file
+moldy

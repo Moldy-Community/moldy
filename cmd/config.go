@@ -47,13 +47,6 @@ In error case:
 
 		if editConfig {
 			valueFile := map[string]interface{}{
-				"moldyPackageInfo": map[string]string{
-					"name":        terminal.BasicPrompt("Moldy Package Info > Name", "none"),
-					"version":     terminal.BasicPrompt("Moldy Package Info > Version", "none"),
-					"author":      terminal.BasicPrompt("Moldy Package Info > Author", "none"),
-					"description": terminal.BasicPrompt("Moldy Package Info > Description", "none"),
-					"url":         terminal.BasicPrompt("Moldy Package Info > URL", "none"),
-				},
 				"adminProjects": map[string]bool{
 					"gitInit":               terminal.BasicPrompt("Admin Projects > Git init", "true") == "true",
 					"conventionalCommits":   terminal.BasicPrompt("Admin Projects > Conventional Commits", "true") == "true",
@@ -67,7 +60,7 @@ In error case:
 					"colorsMode":  terminal.BasicPrompt("Aparience options > Colors mode", "true") == "true",
 				},
 				"moldyRunner": map[string]string{
-					"test": "echo 'Running a example command'",
+					"test": terminal.BasicPrompt("Moldy runner > Runner", "echo 'Running a example command'"),
 				},
 			}
 			paths := []string{

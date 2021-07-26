@@ -10,13 +10,6 @@ import (
 /* Add the default values, paths, aliases and config name and type */
 var (
 	defaults = map[string]interface{}{
-		"moldyPackageInfo": map[string]string{
-			"name":        "none",
-			"version":     "none",
-			"author":      "Example Author",
-			"description": "Example description",
-			"url":         "https://github.com/exampleAuthor/examplePackage",
-		},
 		"adminProjects": map[string]bool{
 			"gitInit":               true,
 			"conventionalCommits":   true,
