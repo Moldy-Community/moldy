@@ -1,17 +1,20 @@
 package cmd
 
 import (
+	"fmt"
 	"os"
-	"strings"
+	"os/exec"
 
+	"github.com/Moldy-Community/moldy/core/git"
 	"github.com/Moldy-Community/moldy/core/terminal"
+	"github.com/Moldy-Community/moldy/utils/colors"
 	"github.com/Moldy-Community/moldy/utils/functions"
-	"github.com/pelletier/go-toml"
 	"github.com/spf13/cobra"
+	vp "github.com/spf13/viper"
 )
 
 var (
-	initFlg bool
+	initFlg, gitInitFlg bool
 )
 
 var projCmd = &cobra.Command{
@@ -23,7 +26,7 @@ var projCmd = &cobra.Command{
 	Run: func(cmd *cobra.Command, args []string) {
 
 		if initFlg {
-			content := map[string]interface{}{
+			valueFile := map[string]interface{}{
 				"moldyPackageInfo": map[string]string{
 					"name":        terminal.BasicPrompt("Moldy Package Info > Name", "none"),
 					"version":     terminal.BasicPrompt("Moldy Package Info > Version", "none"),
@@ -33,43 +36,55 @@ var projCmd = &cobra.Command{
 				},
 			}
 
-			dir, _ := os.Getwd()
-			execDir, _ := os.Executable()
-			homeDir, _ := os.UserHomeDir()
-			points := ""
-			execDirArr := strings.Split(strings.Replace(execDir, "/", "", 1), "/")
-			homeDirArr := strings.Split(strings.Replace(homeDir, "/", "", 1), "/")
-
-			difference := len(execDirArr) - len(homeDirArr)
-
-			for i := 1; i <= difference*2; i++ {
-				if i%3 == 0 {
-					points += "/"
-				} else {
-					points += "."
-				}
+			paths := []string{
+				"./",
+			}
+			configName := "Moldy.pkg.toml"
+			configType := "toml"
+			_ = os.Remove("./Moldy.pkg.toml")
+			for _, p := range paths {
+				vp.AddConfigPath(p)
+			}
+			vp.SetConfigName(configName)
+			vp.SetConfigType(configType)
+			for k, v := range valueFile {
+				vp.SetDefault(k, v)
 			}
 
-			pointsNeedAdd := len(strings.Split(points, "/")) * 2
-
-			for i := 0; i <= pointsNeedAdd; i++ {
-				if i%3 == 0 {
-					points += "/"
-				} else {
-					points += "."
+			if err := vp.SafeWriteConfigAs(configName); err != nil {
+				if os.IsNotExist(err) {
+					err = vp.WriteConfigAs(configName)
+					functions.CheckErrors(err, "Code 2", "Error in write the config file :(", "Report the error on github or retry the command with new permmisions")
 				}
 			}
+		}
 
-			lastDir := strings.Split(strings.Replace(dir, homeDir, "", 1), "/")
-			lastDirStr := strings.Replace(strings.Join(lastDir, "/"), "/", "", 1)
-			file, err := os.Create(points + lastDirStr + "/Moldy.pkg.toml")
+		if gitInitFlg {
+			if git.IsInstalled("git") {
+				execCmd := exec.Command("git", "init")
+				err := execCmd.Run()
+				functions.CheckErrors(err, "Code 2", "Error in write the git init file", "Report the error on github or retry the command with new permmisions")
+			}
+		}
 
-			functions.CheckErrors(err, "1", "Something bad happened with the path", "Unknown exact solution. Leave please the issue in github.com/Moldy-Community/moldy")
-
-			err = toml.NewEncoder(file).Encode(content)
-
-			functions.CheckErrors(err, "1", "Something bad happened at the moment when the file was attempted to be created", "Unknown exact solution. Leave please the issue in github.com/Moldy-Community/moldy")
-
+		if len(args) > 0 {
+			if args[0] == "commit" {
+				if git.IsInstalled("git") {
+					execCmd := exec.Command("git", "commit", "-m", fmt.Sprintf(`"%v"`, terminal.BasicPrompt("Commit message:", "New commit")))
+					err := execCmd.Run()
+					functions.CheckErrors(err, "Code 2", "Error doing the commit", "Report the error on github or retry the command with new permmisions")
+				} else {
+					colors.Error("Install git before do this command")
+				}
+			} else if args[0] == "add" {
+				if git.IsInstalled("git") {
+					execCmd := exec.Command("git", "add", terminal.BasicPrompt("Path to add in stage", "."))
+					err := execCmd.Run()
+					functions.CheckErrors(err, "Code 2", "Error adding the files to stage", "Report the error on github or retry the command with new permmisions")
+				} else {
+					colors.Error("Install git before do this command")
+				}
+			}
 		}
 	},
 }
@@ -77,4 +92,5 @@ var projCmd = &cobra.Command{
 func init() {
 	rootCmd.AddCommand(projCmd)
 	projCmd.Flags().BoolVarP(&initFlg, "init", "i", false, "Init a moldy project")
+	projCmd.Flags().BoolVarP(&gitInitFlg, "git-init", "g", false, "Init git in a folder")
 }
