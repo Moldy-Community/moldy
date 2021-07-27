@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"os"
 	"os/exec"
+	"regexp"
+	"strings"
 
 	"github.com/Moldy-Community/moldy/core/git"
 	"github.com/Moldy-Community/moldy/core/terminal"
@@ -64,6 +66,8 @@ var projCmd = &cobra.Command{
 				execCmd := exec.Command("git", "init")
 				err := execCmd.Run()
 				functions.CheckErrors(err, "Code 2", "Error in write the git init file", "Report the error on github or retry the command with new permmisions")
+			} else {
+				colors.Error("Install git before do this command")
 			}
 		}
 
@@ -83,6 +87,43 @@ var projCmd = &cobra.Command{
 					functions.CheckErrors(err, "Code 2", "Error adding the files to stage", "Report the error on github or retry the command with new permmisions")
 				} else {
 					colors.Error("Install git before do this command")
+				}
+			}
+
+			if args[0] == "select-branch" || args[0] == "sb" {
+				if git.IsInstalled("git") {
+					execCmd, err := exec.Command("git", "for-each-ref", "--sort=committerdate", "refs/heads/", "--format='%(refname:short)'").Output()
+					functions.CheckErrors(err, "Code 2", "Error reviewing the branches", "Report the error on github or retry the command with new permmisions")
+					branchesUnfilter := strings.Split(string(execCmd), "'")
+					var branchesFilter []string
+
+					for _, value := range branchesUnfilter {
+						match, _ := regexp.MatchString("[a-zA-Z0-9]", value)
+						if match {
+							branchesFilter = append(branchesFilter, value)
+						}
+					}
+					branchSelected := strings.Replace(terminal.SelectPrompt("Select branch", branchesFilter), "'", "", 2)
+					err = exec.Command("git", "checkout", branchSelected).Run()
+					functions.CheckErrors(err, "Code 2", "Error changing the branch", "Report the error on github or retry the command with new permmisions")
+				} else {
+					colors.Error("Install git before do this command")
+				}
+			}
+
+			if args[0] == "new-branch" || args[0] == "nb" {
+				if git.IsInstalled("git") {
+					nameBranch := terminal.BasicPrompt("Name of the new branch", "")
+					if nameBranch == "" {
+						fmt.Println("The name of the branch not is valid")
+						return
+					}
+					execCmd := exec.Command("git", "branch", nameBranch)
+					err := execCmd.Run()
+					functions.CheckErrors(err, "Code 2", "Error creating the new branch the branch", "Report the error on github or retry the command with new permmisions")
+					moveTo := exec.Command("git", "checkout", nameBranch)
+					err = moveTo.Run()
+					functions.CheckErrors(err, "Code 2", "Branch created but error in the git checkout to this branch", "Report the error on github or retry the command with new permmisions")
 				}
 			}
 		}
