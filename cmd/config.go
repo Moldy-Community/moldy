@@ -16,11 +16,16 @@ limitations under the License.
 package cmd
 
 import (
+	"os"
+
 	"github.com/Moldy-Community/moldy/core/config"
+	"github.com/Moldy-Community/moldy/core/terminal"
+	"github.com/Moldy-Community/moldy/utils/functions"
 	"github.com/spf13/cobra"
+	vp "github.com/spf13/viper"
 )
 
-var createToogle bool
+var createToggle, editConfig bool
 
 // configCmd represents the config command
 var configCmd = &cobra.Command{
@@ -36,8 +41,49 @@ In error case:
   in the next version :D
 `,
 	Run: func(cmd *cobra.Command, args []string) {
-		if createToogle {
+		if createToggle {
 			config.CreateConfigFile()
+		}
+
+		if editConfig {
+			valueFile := map[string]interface{}{
+				"adminProjects": map[string]bool{
+					"gitInit":               terminal.BasicPrompt("Admin Projects > Git init", "true") == "true",
+					"conventionalCommits":   terminal.BasicPrompt("Admin Projects > Conventional Commits", "true") == "true",
+					"conventionalWorkflows": terminal.BasicPrompt("Admin Projects > Conventional Workflows", "true") == "true",
+					"semverMode":            terminal.BasicPrompt("Admin Projects > Semver Mode", "true") == "true",
+					"changelogs":            terminal.BasicPrompt("Admin Projects > Changelogs", "true") == "true",
+				},
+				"aparienceOptions": map[string]bool{
+					"progressBar": terminal.BasicPrompt("Aparience options > Progress bar", "true") == "true",
+					"asciiArt":    terminal.BasicPrompt("Aparience options > ASCII Art", "true") == "true",
+					"colorsMode":  terminal.BasicPrompt("Aparience options > Colors mode", "true") == "true",
+				},
+				"moldyRunner": map[string]string{
+					"test": terminal.BasicPrompt("Moldy runner > Runner", "echo 'Running a example command'"),
+				},
+			}
+			paths := []string{
+				"./",
+			}
+			configName := "MoldyFile.toml"
+			configType := "toml"
+			_ = os.Remove("./MoldyFile.toml")
+			for _, p := range paths {
+				vp.AddConfigPath(p)
+			}
+			vp.SetConfigName(configName)
+			vp.SetConfigType(configType)
+			for k, v := range valueFile {
+				vp.SetDefault(k, v)
+			}
+
+			if err := vp.SafeWriteConfigAs(configName); err != nil {
+				if os.IsNotExist(err) {
+					err = vp.WriteConfigAs(configName)
+					functions.CheckErrors(err, "Code 2", "Error in write the config file :(", "Report the error on github or re try the command with new permmisions")
+				}
+			}
 		}
 	},
 	Example: "moldy config --create",
@@ -46,5 +92,6 @@ In error case:
 
 func init() {
 	rootCmd.AddCommand(configCmd)
-	configCmd.Flags().BoolVarP(&createToogle, "create", "c", false, "Toggle the flag for create the config file")
+	configCmd.Flags().BoolVarP(&createToggle, "create", "c", false, "Toggle the flag for create the config file")
+	configCmd.Flags().BoolVarP(&editConfig, "edit", "e", false, "Customize the default values of the config")
 }
