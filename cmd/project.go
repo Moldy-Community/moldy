@@ -39,12 +39,15 @@ var projCmd = &cobra.Command{
 			paths := []string{
 				"./",
 			}
+
 			configName := "Moldy.pkg.toml"
 			configType := "toml"
 			_ = os.Remove("./Moldy.pkg.toml")
+
 			for _, p := range paths {
 				vp.AddConfigPath(p)
 			}
+
 			vp.SetConfigName(configName)
 			vp.SetConfigType(configType)
 			for k, v := range valueFile {

@@ -63,15 +63,13 @@ In error case:
 					"test": terminal.BasicPrompt("Moldy runner > Runner", "echo 'Running a example command'"),
 				},
 			}
-			paths := []string{
-				"./",
-			}
+
 			configName := "MoldyFile.toml"
 			configType := "toml"
 			_ = os.Remove("./MoldyFile.toml")
-			for _, p := range paths {
-				vp.AddConfigPath(p)
-			}
+
+			vp.AddConfigPath("utils")
+
 			vp.SetConfigName(configName)
 			vp.SetConfigType(configType)
 			for k, v := range valueFile {

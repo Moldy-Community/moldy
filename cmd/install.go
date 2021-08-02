@@ -2,18 +2,17 @@ package cmd
 
 import (
 	"fmt"
+	"io/ioutil"
+	"path/filepath"
+    "errors"
+    "strings"
 
-	gitF "github.com/Moldy-Community/moldy/core/git"
-	"github.com/Moldy-Community/moldy/core/locks"
-	"github.com/Moldy-Community/moldy/core/packages"
+	// gitF "github.com/Moldy-Community/moldy/core/git"
+	// "github.com/Moldy-Community/moldy/core/locks"
 	"github.com/Moldy-Community/moldy/utils/colors"
 	"github.com/Moldy-Community/moldy/utils/functions"
+	"github.com/cavaliercoder/grab"
 	"github.com/spf13/cobra"
-)
-
-var (
-	createInstall string
-	nameInstall   bool
 )
 
 // configCmd represents the config command
@@ -24,24 +23,36 @@ var installCmd = &cobra.Command{
         allow searching and extracting the content of a github packages on github
        `,
 	Run: func(cmd *cobra.Command, args []string) {
-		if createInstall != "" {
-			urlClone := "https://" + createInstall + ".git"
-			gitF.CloneRepos(urlClone)
-			locks.WriteLockUrl(urlClone)
-		} else if nameInstall {
-			data, err := packages.GetSearch(args[0])
-			functions.CheckErrors(err, "Code 2", "Error in get the api package", "Check if package exists or report the bug on github")
-			info := data.Data
-			for index, val := range info {
-				if index == 0 {
-					colors.Info("Cloning the repo: ")
-					fmt.Print(val.Name)
-					gitF.CloneRepos(val.Url)
-					locks.WriteLock(val.Name)
-					break
-				}
-			}
+		if len(args) == 1 {
+			resp, err := grab.Get(functions.GetCacheDir(), args[0])
+			
+            functions.CheckErrors(err, "Code 2", "Error in downlaod the cache", "Check your connection or report the error on github")
+			 
+			var dirfile string
+            
+             err := filepath.Walk(functions.GetCacheDir(), func(path string, info os.FileInfo, err error) error {
+
+                dirs = strinsg.Split(path,"\n")
+
+                   for i := 0; i < len(dirs); i++ {
+		              	if strings.Contains(dirs[i], "cache.json") {
+				            dirfile = dirs[i]
+		      	           break
+                        } 
+		              }
+                  if dirfile == ""{
+                    return errors.New("File not found") 
+			       }
+		         }
+		return nil
+	})
+            
+            
+            dat, err2 := ioutil.ReadFile(dirlfile)
+			functions.CheckErrors(err2, "Code 2", "Error in read the file check if exists ", "Report the error on github or check if file exists")
+			colors.Info(string(dat))
 		} else {
+			fmt.Print(len(args))
 			colors.Error("Error in the create install flag")
 		}
 	},
@@ -51,6 +62,4 @@ var installCmd = &cobra.Command{
 
 func init() {
 	rootCmd.AddCommand(installCmd)
-	installCmd.Flags().StringVarP(&createInstall, "url", "u", "github.com/Moldy-Community/moldy", "Clone the repository from a url")
-	installCmd.Flags().BoolVarP(&nameInstall, "pkg", "p", false, "Insert the name and search in the moldy api the package")
 }
