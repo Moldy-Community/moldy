@@ -9,7 +9,7 @@
 
 ![GithubTestBadge](https://img.shields.io/github/workflow/status/Moldy-Community/moldy/Go?label=Tests&logo=github)
 ![Last Commit](https://img.shields.io/github/last-commit/Moldy-Community/moldy)
-![DiscordBadge](https://img.shields.io/discord/842085043777831012?logo=discord&logoColor=white)
+![Lines of code](https://img.shields.io/tokei/lines/github/Moldy-Community/moldy)
 ![Moldy STARS](https://img.shields.io/github/stars/Moldy-Community/moldy?style=social)
 ![Moldy License](https://img.shields.io/github/license/moldy-community/moldy)
 
