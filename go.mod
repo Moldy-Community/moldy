@@ -4,7 +4,7 @@ go 1.16
 
 require (
 	github.com/TeoDev1611/darth-db v0.0.0-20210608200445-3bbbc920ea2c
-	github.com/fatih/color v1.12.0
+	github.com/fatih/color v1.13.0
 	github.com/go-git/go-git/v5 v5.4.2
 	github.com/go-resty/resty/v2 v2.6.0
 	github.com/google/uuid v1.3.0
