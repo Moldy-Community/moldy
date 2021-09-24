@@ -8,7 +8,7 @@ require (
 	github.com/go-git/go-git/v5 v5.4.2
 	github.com/go-resty/resty/v2 v2.6.0
 	github.com/google/uuid v1.3.0
-	github.com/joho/godotenv v1.3.0
+	github.com/joho/godotenv v1.4.0
 	github.com/manifoldco/promptui v0.8.0
 	github.com/matthewhartstonge/argon2 v0.1.5
 	github.com/olekukonko/tablewriter v0.0.5
