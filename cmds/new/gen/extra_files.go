@@ -1,4 +1,4 @@
-package new
+package gen
 
 var EditorConfigData = []byte(`
 root = true
