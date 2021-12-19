@@ -12,9 +12,8 @@ func init() {
 	Logger.SetFormatter(&log.TextFormatter{
 		DisableColors: false,
 		FullTimestamp: false,
-    ForceColors: true,
-    ForceQuote: true,
+		ForceColors:   true,
+		ForceQuote:    true,
 	})
-  Logger.Out = os.Stdout
+	Logger.Out = os.Stdout
 }
-

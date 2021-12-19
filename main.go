@@ -7,7 +7,7 @@ import (
 
 // Commands flags
 var (
-  InfoOpenBrowser bool
+	InfoOpenBrowser bool
 )
 
 var (
@@ -30,7 +30,7 @@ The best speed provide by Golang :D.
 	InfoSubCommand = flaggy.NewSubcommand("info")
 	InfoSubCommand.ShortName = "about"
 	InfoSubCommand.Description = "Show the information about Moldy"
-  InfoSubCommand.Bool(&InfoOpenBrowser, "b", "browser", "Open in the browser the moldy repository")
+	InfoSubCommand.Bool(&InfoOpenBrowser, "b", "browser", "Open in the browser the moldy repository")
 
 	NewSubCommand = flaggy.NewSubcommand("new")
 	NewSubCommand.ShortName = "init"
@@ -52,8 +52,8 @@ The best speed provide by Golang :D.
 	flaggy.Parse()
 }
 
-func main(){
-  if InfoOpenBrowser {
-    utils.OpenUrlBrowser("https://github.com/Moldy-Community/moldy")
-  }
+func main() {
+	if InfoOpenBrowser {
+		utils.OpenUrlBrowser("https://github.com/Moldy-Community/moldy")
+	}
 }
