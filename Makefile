@@ -1,2 +1,2 @@
 fmt:
-	gofumpt -w .
+	gofumpt -w -l .
