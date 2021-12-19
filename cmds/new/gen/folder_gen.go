@@ -9,7 +9,7 @@ import (
 
 func GenerateFolders(folders []string) {
 	for _, f := range folders {
-		err := os.Mkdir(f, 0o755)
+		err := os.Mkdir(f, 0755)
 		errors.CheckError(err, "Code 2", "Error in create the folders", "Check the permissions, or re run with the sudo or admin permissions or report the error on github")
 	}
 
